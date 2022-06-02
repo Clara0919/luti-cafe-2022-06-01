@@ -20,15 +20,18 @@
           <p>伴手禮盒</p>
         </div>
       </div>
+
       <div class="col-lg-10">
         <div class="col-lg-3 col-md-4 col-lg-5">
           <div class="card" style="width: 18rem">
             <div class="hover">
-              <img
-                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2NTg1MzM1LzE2NDg3MDMwNzdfNTU4MGMyM2I2MTAzOGJlNjE2MDIuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=157cfcf178a6d556"
-                class="card-img-top"
-                alt=""
-              />
+              <router-link to="/product">
+                <img
+                  src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2NTg1MzM1LzE2NDg3MDMwNzdfNTU4MGMyM2I2MTAzOGJlNjE2MDIuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=157cfcf178a6d556"
+                  class="card-img-top"
+                  alt=""
+                />
+              </router-link>
             </div>
             <div class="card-body">
               <p class="card-text">產品名稱</p>
