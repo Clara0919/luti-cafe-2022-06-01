@@ -11,61 +11,39 @@
     <div class="row d-flex justify-content-around">
       <div class="col-lg-4 col-md-12 col-sm-12">
         <div class="box">
-          <div
-            id="carouselExampleControls"
-            class="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img
-                  src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5a1a12c9d1643bc8"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDQyMzYwNTRfNWY4Zjk4YjU3NjM4ZjczNWU0ZmUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=172f380033a0d264"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item">
-                <img
-                  src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NTM2Mzg1OTRfNjVjMWU0MWZiMzA2MGFjNTcwMTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=bfc5cc26529ec97f"
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
+          <div class="text-center">
+            <img
+              id="main"
+              src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5a1a12c9d1643bc8"
+              alt=""
+            />
+          </div>
+          <div class="tumbnails">
+            <div class="pic-wrap">
+              <img
+                @click="changePic()"
+                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5a1a12c9d1643bc8"
+                alt=""
+              />
             </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+            <div class="pic-wrap">
+              <img
+                @click="changePic()"
+                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDQyMzYwNTRfNWY4Zjk4YjU3NjM4ZjczNWU0ZmUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=172f380033a0d264"
+                alt=""
+              />
+            </div>
+            <div class="pic-wrap">
+              <img
+                @click="changePic()"
+                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NTM2Mzg1OTRfNjVjMWU0MWZiMzA2MGFjNTcwMTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=bfc5cc26529ec97f"
+                alt=""
+              />
+            </div>
           </div>
         </div>
       </div>
+
       <div class="col-lg-6 col-md-6 col-sm-12">
         <h2>黑芝麻花生脆餅</h2>
         <p class="intro">
@@ -90,30 +68,6 @@
       </div>
     </div>
   </div>
-
-  <div class="text-center">
-    <img id="main" src="images/pic1.jpg" alt="" />
-  </div>
-  <div class="tumbnails">
-    <div class="pic-wrap" @click="changePic()">
-      <img
-        src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NTM2Mzg1OTRfNjVjMWU0MWZiMzA2MGFjNTcwMTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=bfc5cc26529ec97f"
-        alt=""
-      />
-    </div>
-    <div class="pic-wrap" @click="changePic()">
-      <img
-        src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDQyMzYwNTRfNWY4Zjk4YjU3NjM4ZjczNWU0ZmUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=172f380033a0d264"
-        alt=""
-      />
-    </div>
-    <div class="pic-wrap" @click="changePic()">
-      <img
-        src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NTM2Mzg1OTRfNjVjMWU0MWZiMzA2MGFjNTcwMTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=bfc5cc26529ec97f"
-        alt=""
-      />
-    </div>
-  </div>
 </template>
 <style>
 .product-main {
@@ -133,9 +87,7 @@
 h4 {
   color: #734429;
 }
-.quantity {
-  border: #734429 solid 1px;
-}
+
 .add-cart {
   margin-top: 50px;
 }
@@ -154,8 +106,7 @@ h4 {
   border: 1px solid #734429;
   border-radius: 4px;
 }
-
-/* test */
+/* carousel */
 .text-center {
   text-align: center;
 }
@@ -195,6 +146,7 @@ export default {
     },
     changePic() {
       let pics = document.querySelectorAll(".pic-wrap");
+      let main = document.querySelector("#main");
       for (let i = 0; i < pics.length; i++) {
         pics[i].addEventListener("click", function () {
           let img = this.childNodes[0].src;
