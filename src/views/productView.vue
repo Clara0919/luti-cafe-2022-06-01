@@ -10,41 +10,39 @@
   <div class="container-fluid product-main">
     <div class="row d-flex justify-content-around">
       <div class="col-lg-4 col-md-12 col-sm-12">
-        <div class="box">
-          <div class="text-center">
+        <div class="text-center main-pic">
+          <img
+            id="main"
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5a1a12c9d1643bc8"
+            alt=""
+          />
+        </div>
+        <div class="tumbnails">
+          <div class="pic-wrap">
             <img
-              id="main"
+              @click="changePic()"
               src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5a1a12c9d1643bc8"
               alt=""
             />
           </div>
-          <div class="tumbnails">
-            <div class="pic-wrap">
-              <img
-                @click="changePic()"
-                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5a1a12c9d1643bc8"
-                alt=""
-              />
-            </div>
-            <div class="pic-wrap">
-              <img
-                @click="changePic()"
-                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDQyMzYwNTRfNWY4Zjk4YjU3NjM4ZjczNWU0ZmUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=172f380033a0d264"
-                alt=""
-              />
-            </div>
-            <div class="pic-wrap">
-              <img
-                @click="changePic()"
-                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NTM2Mzg1OTRfNjVjMWU0MWZiMzA2MGFjNTcwMTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=bfc5cc26529ec97f"
-                alt=""
-              />
-            </div>
+          <div class="pic-wrap">
+            <img
+              @click="changePic()"
+              src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDQyMzYwNTRfNWY4Zjk4YjU3NjM4ZjczNWU0ZmUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=172f380033a0d264"
+              alt=""
+            />
+          </div>
+          <div class="pic-wrap">
+            <img
+              @click="changePic()"
+              src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NTM2Mzg1OTRfNjVjMWU0MWZiMzA2MGFjNTcwMTEuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=bfc5cc26529ec97f"
+              alt=""
+            />
           </div>
         </div>
       </div>
 
-      <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="col-lg-4 col-md-4 col-sm-12">
         <h2>黑芝麻花生脆餅</h2>
         <p class="intro">
           無麩質 天然純手工製作 低溫烘焙，非油炸 無添加防腐劑, 無香料, 無蔗糖
@@ -70,26 +68,40 @@
   </div>
 </template>
 <style>
+a {
+  color: gray;
+}
+a:hover {
+  color: #734429;
+}
+
 .product-main {
   padding: 30px;
 }
-.box img {
+
+.main-pic img {
+  object-fit: cover;
+  height: 380px;
   max-width: 100%;
 }
-
 .intro {
   color: gray;
+  padding-top: 30px;
 }
 
 .price {
   margin-bottom: 0px;
+  padding-top: 60px;
 }
 h4 {
   color: #734429;
 }
+.quantity {
+  padding-top: 60px;
+}
 
 .add-cart {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .btn-default {
   border: solid 1px gray;
