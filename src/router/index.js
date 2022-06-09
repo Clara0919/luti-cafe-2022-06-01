@@ -6,6 +6,14 @@ import coffeeView from '../views/coffeeView.vue'
 import selectionView from '../views/selectionView.vue'
 import giftView from '../views/giftView.vue'
 import productView from '../views/productView.vue'
+import loginView from '../views/loginView.vue'
+import logoutView from '../views/logoutView.vue'
+import adminView from '../views/adminView.vue'
+import registerView from '../views/registerView.vue'
+import forgetPassword from '../views/forgetPassword.vue'
+import shopCartView from '../views/shopCartView.vue'
+
+
 
 
 
@@ -45,7 +53,39 @@ const routes = [
     path: '/product',
     name: 'product',
     component: productView
-  }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: loginView
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    component: logoutView
+  }, {
+    path: '/register',
+    name: 'register',
+    component: registerView
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: adminView
+  },
+  {
+    path: '/forgetpassword',
+    name: 'forgetPassword',
+    component: forgetPassword
+  },
+  {
+    path: '/shopcart',
+    name: 'shopCart',
+    component: shopCartView
+  },
+
+
+
 ]
 
 const router = createRouter({

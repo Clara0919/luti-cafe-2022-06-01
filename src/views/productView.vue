@@ -67,7 +67,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 a {
   color: gray;
 }
