@@ -60,7 +60,9 @@
           <button class="btn btn-default" @click="increment()">+</button>
         </div>
         <div class="add-cart">
-          <input class="btn btn-outline" type="button" value="加入購物車" />
+          <router-link to="/shopCart"
+            ><input class="btn btn-outline" type="button" value="加入購物車"
+          /></router-link>
           <input class="btn btn-solid" type="button" value="直接購買" />
         </div>
       </div>

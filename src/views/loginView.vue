@@ -17,7 +17,7 @@
         <input type="password" class="form-control form-control-lg" />
       </div>
 
-      <button type="submit" class="btn btn-dark btn-lg btn-block">
+      <button type="submit" class="btn btn-lg">
         <router-link to="/admin"> 登入會員 </router-link>
       </button>
 
@@ -25,12 +25,27 @@
 
       <div class="d-flex justify-content-between">
         <router-link to="/register">
-          <i class="bi bi-person"></i>註冊會員
+          <span><i class="bi bi-person"></i>註冊會員</span>
         </router-link>
         <router-link to="/forgetpassword">
-          <i class="bi bi-unlock"></i>忘記密碼
+          <span><i class="bi bi-unlock"></i>忘記密碼</span>
         </router-link>
       </div>
     </form>
   </div>
 </template>
+
+<style scoped>
+button {
+  background-color: #734429 !important;
+  margin-top: 20px;
+}
+a {
+  color: white;
+}
+
+span {
+  color: #734429 !important;
+  padding-top: 30px;
+}
+</style>

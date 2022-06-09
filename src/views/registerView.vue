@@ -26,7 +26,7 @@
 
       <p class="forgot-password text-right">
         已經註冊過了?
-        <router-link to="/login">登入</router-link>
+        <router-link to="/login"><span>登入</span></router-link>
       </p>
     </form>
   </div>
@@ -35,3 +35,16 @@
  <script>
 export default {};
 </script>
+
+<style>
+button {
+  background-color: #734429 !important;
+  margin-top: 20px;
+}
+a {
+  color: white;
+}
+span {
+  color: #734429;
+}
+</style>

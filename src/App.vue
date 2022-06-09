@@ -28,7 +28,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">首頁</a>
+              <a class="nav-link active" aria-current="page"
+                ><router-link to="/cookie">首頁</router-link></a
+              >
             </li>
 
             <li class="nav-item dropdown">
@@ -43,11 +45,21 @@
                 商品分類
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><router-link to="/cookie">手工餅乾</router-link></li>
-                <li><router-link to="/coffee">職人咖啡</router-link></li>
-                <li><router-link to="/tool">沖煮器具</router-link></li>
-                <li><router-link to="/selection">精選好物</router-link></li>
-                <li><router-link to="/gift">伴手禮盒</router-link></li>
+                <li>
+                  <router-link to="/cookie">手工餅乾</router-link>
+                </li>
+                <li>
+                  <router-link to="/coffee">職人咖啡</router-link>
+                </li>
+                <li>
+                  <router-link to="/tool">沖煮器具</router-link>
+                </li>
+                <li>
+                  <router-link to="/selection">精選好物</router-link>
+                </li>
+                <li>
+                  <router-link to="/gift">伴手禮盒</router-link>
+                </li>
               </ul>
             </li>
             <li class="nav-item">
@@ -126,9 +138,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 * {
   box-sizing: border-box;
+}
+
+a {
+  color: rgb(36, 36, 36);
+}
+
+a:hover {
+  color: #734429;
 }
 .top-logo img {
   display: block;

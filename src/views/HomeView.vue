@@ -417,6 +417,10 @@ h4:not(.dontselect) {
   text-decoration: line-through;
 }
 
+.btn {
+  background-color: #734429 !important;
+  border: #734429;
+}
 .member-gift {
   padding: 50px 0;
 }
