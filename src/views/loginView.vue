@@ -49,3 +49,7 @@ span {
   padding-top: 30px;
 }
 </style>
+ 
+  <script>
+export default {};
+</script> 

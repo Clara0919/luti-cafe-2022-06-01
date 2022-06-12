@@ -33,12 +33,11 @@
 </template>
 
  <script>
-export default {};
 </script>
 
-<style>
+<style scoped>
 button {
-  background-color: #734429 !important;
+  background-color: #734429;
   margin-top: 20px;
 }
 a {

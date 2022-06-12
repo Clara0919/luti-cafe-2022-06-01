@@ -169,6 +169,24 @@ export default {
         });
       }
     },
+
+    redirectProduct: function (id) {
+      this.$router.push(`/product/${id}`);
+    },
+    parseImgPath: function (path) {
+      return this.$store.state.serverPath + path;
+    },
+  },
+  mounted() {
+    this.axios.get("/products").then((response) => {
+      console.log(response);
+      this.products = response.data.data;
+      // this.products = response.data.data.filter((item) => {
+      //   return item.category === "手工餅乾";
+      // });
+      // this.cookieList = cookieList;
+      // console.log("cookieList", cookieList);
+    });
   },
 };
 /*
