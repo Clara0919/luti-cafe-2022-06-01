@@ -50,7 +50,7 @@ const routes = [
     component: giftView
   },
   {
-    path: '/product',
+    path: '/product/:productId',
     name: 'product',
     component: productView
   },
@@ -83,6 +83,7 @@ const routes = [
     name: 'shopCart',
     component: shopCartView
   },
+
 
 
 

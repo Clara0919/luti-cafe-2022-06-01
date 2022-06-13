@@ -21,21 +21,30 @@
         </div>
       </div>
 
-      <div class="col-lg-10">
-        <template v-for="product in products">
-          <div class="col-lg-3 col-md-4 col-lg-5">
-            <div class="card" style="width: 18rem">
-              <div class="hover">
-                <router-link to="/product">
-                  <img :src="product.imageUrlOne" class="card-img-top" alt="" />
+      <div class="col-10">
+        <div class="row row2">
+          <template v-for="product in products" :key="product.id">
+            <div class="col-lg-3 col-md-4 col-sm-5 gy-4">
+              <div class="card">
+                <router-link :to="`/product/${product.id}`">
+                  <div class="hover">
+                    <img
+                      :src="product.imageUrlOne"
+                      class="card-img-top"
+                      alt=""
+                    />
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">{{ product.title }}</p>
+                    <p class="card-text price">
+                      <strong>NT${{ product.price }}</strong>
+                    </p>
+                  </div>
                 </router-link>
               </div>
-              <div class="card-body">
-                <p class="card-text">{{ product.title }}</p>
-              </div>
             </div>
-          </div>
-        </template>
+          </template>
+        </div>
       </div>
     </div>
   </div>
