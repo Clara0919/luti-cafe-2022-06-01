@@ -2,8 +2,10 @@
   <!-- <template v-for="product in products" :key="product.id"> -->
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">首頁</a></li>
-      <li class="breadcrumb-item"><a href="#">手工餅乾</a></li>
+      <li class="breadcrumb-item"><router-link to="/">首頁</router-link></li>
+      <li class="breadcrumb-item">
+        <router-link :to="`/${category}`">{{ category }}</router-link>
+      </li>
       <li class="breadcrumb-item active" aria-current="page">
         {{ title }}
       </li>
@@ -67,10 +69,15 @@
           <button class="btn btn-default" @click="increment()">+</button>
         </div>
         <div class="add-cart">
+          <input
+            class="btn btn-outline"
+            type="button"
+            value="加入購物車"
+            @click="addCart(id)"
+          />
           <router-link to="/shopCart"
-            ><input class="btn btn-outline" type="button" value="加入購物車"
-          /></router-link>
-          <input class="btn btn-solid" type="button" value="直接購買" />
+            ><input class="btn btn-solid" type="button" value="直接購買" />
+          </router-link>
         </div>
       </div>
     </div>
@@ -139,6 +146,7 @@ export default {
     return {
       quantity: 1,
       products: [],
+      category: [],
       productDetail: [],
       price: [],
       title: [],
@@ -157,6 +165,13 @@ export default {
       } else {
         this.quantity--;
       }
+    },
+    addCart(id) {
+      console.log(this.axios);
+      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
+        console.log(response);
+        // this.$router.push('/cart')
+      });
     },
     // changePic() {
     //   let pics = document.querySelectorAll(".pic-wrap");
@@ -183,6 +198,7 @@ export default {
           vm.imageUrlTwo = item.imageUrlTwo;
           vm.imageUrlThree = item.imageUrlThree;
           vm.description = item.description;
+          vm.category = item.category;
         }
       });
       // this.products = response.data.data.filter((item) => {
@@ -191,6 +207,9 @@ export default {
       // this.cookieList = cookieList;
       // console.log("cookieList", cookieList);
     });
+    // this.axios.get("/cart").then((res) => {
+    //   console.log(res);
+    // });
   },
 };
 /*

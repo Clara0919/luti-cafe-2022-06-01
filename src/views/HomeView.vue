@@ -1,6 +1,4 @@
 <template>
-  <!-- banner -->
-
   <div
     id="carouselExampleIndicators"
     class="carousel slide"
@@ -104,25 +102,30 @@
     </div>
   </div>
   <!-- popular products -->
+
   <div class="container-fluid px-4">
     <h4>熱銷商品</h4>
     <hr />
     <div class="row g-3">
       <div class="col-lg-3 col-md-4 col-sm-6">
         <div class="card">
-          <!-- 再開一個card把bootstrap的card包起來，因為bootstrap的card有一些特殊設定，所以gx會無法work -->
-          <img
-            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1Mjc3LzE2NDI1NzgzODJfZDE3YWFlNDYxYjJmMDRkOWZlMjUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=f74b188a322c62b7"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h5 class="card-title">璐緹幸福好禮</h5>
-            <span class="card-text original-price"> NT$760</span>
-            <span class="card-text"> NT$670</span>
-            <br />
-            <a href="#" class="btn btn-primary">加入購物車</a>
-          </div>
+          <router-link to="/product/3">
+            <!-- 再開一個card把bootstrap的card包起來，因為bootstrap的card有一些特殊設定，所以gx會無法work -->
+            <img
+              src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1Mjc3LzE2NDI1NzgzODJfZDE3YWFlNDYxYjJmMDRkOWZlMjUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=f74b188a322c62b7"
+              class="card-img-top"
+              alt="..."
+            />
+
+            <div class="card-body">
+              <h5 class="card-title">璐緹幸福好禮</h5>
+              <span class="card-text original-price"> NT$760</span>
+              <span class="card-text"> NT$670</span>
+              <br />
+
+              <a href="#" class="btn btn-primary">加入購物車</a>
+            </div>
+          </router-link>
         </div>
       </div>
       <div class="col-lg-3 col-md-4 col-sm-6">
@@ -134,10 +137,13 @@
             alt="..."
           />
           <div class="card-body">
+            <!-- <router-link :to="`/product/${product.id}`"> -->
             <h5 class="card-title">璐緹金喜好禮</h5>
             <span class="card-text original-price"> NT$860</span>
             <span class="card-text"> NT$790</span><br />
             <a href="#" class="btn btn-primary">加入購物車</a>
+            <!-- </router-link> -->
+            >
           </div>
         </div>
       </div>
@@ -251,6 +257,7 @@
           </div>
         </div>
       </div>
+
       <!-- news -->
       <div class="col-sm-12 col-md-6 col-lg-6">
         <div class="news">
@@ -465,4 +472,28 @@ h4:not(.dontselect) {
   height: 200px;
 }
 </style>
+<script>
+export default {
+  name: "Quantity",
+  data() {
+    return {
+      products: [],
+    };
+  },
+  methods: {
+    addCart(id) {
+      console.log(this.axios);
+      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
+        console.log(response);
+        // this.$router.push('/cart')
+      });
+    },
+  },
+  mounted() {
+    this.axios.get("/products").then((response) => {
+      console.log(response);
+    });
+  },
+};
+</script>
 

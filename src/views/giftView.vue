@@ -7,7 +7,7 @@
   </nav>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 gy-4">
         <div class="vertical-nav">
           <p>手工餅乾</p>
           <hr />
@@ -70,6 +70,12 @@ hr {
 .card-text {
   text-align: center;
 }
+.price {
+  color: #734429;
+}
+.row2 {
+  padding-top: 0;
+}
 </style>
 <script>
 export default {
@@ -83,7 +89,7 @@ export default {
       console.log(response);
       // this.products = response.data.data;
       this.products = response.data.data.filter((item) => {
-        return item.category === "伴手禮盒";
+        return item.category === "gift";
       });
       // this.cookieList = cookieList;
       // console.log("cookieList", cookieList);

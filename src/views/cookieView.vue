@@ -90,7 +90,7 @@ export default {
       console.log(response);
       // this.products = response.data.data;
       this.products = response.data.data.filter((item) => {
-        return item.category === "手工餅乾";
+        return item.category === "cookie";
       });
       // this.cookieList = cookieList;
       // console.log("cookieList", cookieList);

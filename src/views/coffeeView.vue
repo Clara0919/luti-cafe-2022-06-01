@@ -7,7 +7,7 @@
   </nav>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-2 gy-2">
+      <div class="col-2 gy-4">
         <div class="vertical-nav">
           <p>手工餅乾</p>
           <hr />
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-       <div class="col-10">
+      <div class="col-10">
         <div class="row row2">
           <template v-for="product in products" :key="product.id">
             <div class="col-lg-3 col-md-4 col-sm-5 gy-4">
@@ -70,7 +70,9 @@ hr {
 .card-text {
   text-align: center;
 }
-
+.price {
+  color: #734429;
+}
 .row2 {
   padding-top: 0;
 }
@@ -87,7 +89,7 @@ export default {
       console.log(response);
       // this.products = response.data.data;
       this.products = response.data.data.filter((item) => {
-        return item.category === "職人咖啡";
+        return item.category === "coffee";
       });
       // this.cookieList = cookieList;
       // console.log("cookieList", cookieList);
