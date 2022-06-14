@@ -9,17 +9,17 @@
 
       <div class="form-group">
         <label>名字</label>
-        <input type="text" class="form-control form-control-lg" />
+        <input type="text" class="form-control form-control-lg"  v-model="displayName"/>
       </div>
 
       <div class="form-group">
         <label>信箱</label>
-        <input type="email" class="form-control form-control-lg" />
+        <input type="email" class="form-control form-control-lg" v-model="email"/>
       </div>
 
       <div class="form-group">
         <label>密碼</label>
-        <input type="password" class="form-control form-control-lg" />
+        <input type="password" class="form-control form-control-lg"  v-model="password"/>
       </div>
 
       <div  v-if="errors.length" class="alert alert-danger" role="alert">
@@ -56,7 +56,7 @@ export default {
             userCreateSuccessMsg: ''
         }
     },
-    
+
     methods: {
         validEmail: function (email) {
           var emailRule = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
