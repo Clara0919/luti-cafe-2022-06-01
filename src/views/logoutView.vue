@@ -7,7 +7,7 @@
     <button
       type="submit"
       class="btn btn-dark btn-lg btn-block"
-      @click="logOut()"
+      @click="logOut"
     >
       登出
     </button>
@@ -16,5 +16,23 @@
 
  
   <script>
-export default {};
+export default {
+  methods: {
+    logout: function(){
+      this.axios.post('/logout')
+          .then((response) => {
+            console.log(response.data)
+            // this.$router.push('/')
+            // this.$store.commit({
+            //   type: 'updateLoginStatus',
+            //   loginStatus: 0
+            // })
+          })
+          .catch((err)=>{
+            console.log(err);
+          })
+    },
+  },
+
+};
 </script> 
