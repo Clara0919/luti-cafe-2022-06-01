@@ -12,15 +12,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="product in products">
               <td>
                 <img
-                  src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiMTYweDE2MCMiXV0.jpeg?sha=c9210b598466573c"
+                  :src="product.imageUrlOne"
                   alt=""
                 />
-                <span class="product-name">黑芝麻花生脆餅</span>
+                <span class="product-name">{{ product.title }}</span>
               </td>
-              <td><p class="price">250</p></td>
+              <td><p class="price">NT${{ product.price }}</p></td>
               <td>
                 <div class="quantity input-group">
                   <button class="btn btn-default" @click="decrement()">
@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       quantity: 1,
+      products: [],
     };
   },
   methods: {
@@ -66,6 +67,12 @@ export default {
         this.quantity--;
       }
     },
+  },
+  mounted() {
+    this.axios.get("/cart").then((response) => {
+      console.log(response);
+      this.products = response.data.data
+    });
   },
 };
 </script>

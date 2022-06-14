@@ -73,7 +73,7 @@
             class="btn btn-outline"
             type="button"
             value="加入購物車"
-            @click="addCart(id)"
+            @click="addCart(id, quantity)"
           />
           <router-link to="/shopCart"
             ><input class="btn btn-solid" type="button" value="直接購買" />
@@ -146,6 +146,7 @@ export default {
     return {
       quantity: 1,
       products: [],
+      id: '',
       category: [],
       productDetail: [],
       price: [],
@@ -166,12 +167,13 @@ export default {
         this.quantity--;
       }
     },
-    addCart(id) {
+    addCart(id, quantity) {
       console.log(this.axios);
-      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
+      this.axios.post("/cart-add-item", { productId: id, quantity: quantity}).then((response) => {
         console.log(response);
         // this.$router.push('/cart')
       });
+      
     },
     // changePic() {
     //   let pics = document.querySelectorAll(".pic-wrap");
@@ -192,6 +194,7 @@ export default {
       vm.productDetail = await response.data.data;
       vm.productDetail.forEach(function (item, index) {
         if (item.id == vm.$route.params.productId) {
+          vm.id = item.id;
           vm.price = item.price;
           vm.title = item.title;
           vm.imageUrlOne = item.imageUrlOne;

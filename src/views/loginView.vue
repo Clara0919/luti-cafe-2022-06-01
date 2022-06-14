@@ -9,12 +9,12 @@
 
       <div class="form-group">
         <label><i class="bi bi-person"></i>帳號</label>
-        <input type="email" class="form-control form-control-lg" />
+        <input type="email" class="form-control form-control-lg" v-model="email"/>
       </div>
 
       <div class="form-group">
         <label><i class="bi bi-lock"></i>密碼</label>
-        <input type="password" class="form-control form-control-lg" />
+        <input type="password" class="form-control form-control-lg" v-model="password"/>
       </div>
 
       <div  v-if="errors.length" class="alert alert-danger" role="alert">
@@ -26,9 +26,7 @@
         <p>{{noLoginMsg}}</p>
       </div>
 
-      <button class="btn btn-lg" @click="postLogin">
-        <router-link to="/admin"> 登入會員 </router-link>
-      </button>
+      <button class="btn btn-lg btn-dark" @click.prevent="postLogin">登入會員</button>
 
       <hr class="divider" />
 
@@ -72,10 +70,10 @@ span {
       },
       
       methods: {
-          validEmail: function (email) {
-            var emailRule = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return emailRule.test(email);
-          },
+          // validEmail: function (email) {
+          //   var emailRule = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          //   return emailRule.test(email);
+          // },
 
           postLogin() {
               const submitForm = {
@@ -85,14 +83,14 @@ span {
               // console.log(submitForm)
               this.axios.post('/login', submitForm)
                   .then((res) => {
-                    console.log(res.data)
+                    console.log(res.data.loginSuccess)
                     let status = res.data.loginSuccess
                     switch (status){
                       case 0, 2 :
                         this.noLoginMsg = '找不到此 user 或密碼錯誤'
                         break;
                       case 1 :
-                        this.reload()
+                        // this.reload()
                         this.$router.push('/')
                         break;
                     }
