@@ -27,7 +27,7 @@
                     -
                   </button>
 
-                  <input type="number" min="0.00" :value="quantity" />
+                  <input type="number" min="0.00" :value="product.cartItem.quantity" />
 
                   <button class="btn btn-default" @click="increment()">
                     +
@@ -52,7 +52,7 @@ export default {
   name: "Quantity",
   data() {
     return {
-      quantity: 1,
+      quantity: '',
       products: [],
     };
   },
@@ -71,7 +71,8 @@ export default {
   mounted() {
     this.axios.get("/cart").then((response) => {
       console.log(response);
-      this.products = response.data.data
+      this.products = response.data
+      // this.quantity = response.data.cartItem.quantity
     });
   },
 };
