@@ -74,6 +74,11 @@ export default {
       this.products = response.data
       // this.quantity = response.data.cartItem.quantity
     });
+    // this.axios.get("/cart-quantity").then((response) => {
+    //   console.log("cart-quantity: "+response);
+    //   // this.products = response.data
+    //   // this.quantity = response.data.cartItem.quantity
+    // });
   },
 };
 </script>

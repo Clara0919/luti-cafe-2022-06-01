@@ -75,13 +75,13 @@ span {
           //   return emailRule.test(email);
           // },
 
-          postLogin() {
+          async postLogin() {
               const submitForm = {
                   email: this.email,
                   password: this.password
               }
               // console.log(submitForm)
-              this.axios.post('/login', submitForm)
+              await this.axios.post('/login', submitForm)
                   .then((res) => {
                     console.log(res.data.loginSuccess)
                     let status = res.data.loginSuccess
@@ -91,6 +91,7 @@ span {
                         break;
                       case 1 :
                         // this.reload()
+                        this.$store.dispatch('getLoginStatus')
                         this.$router.push('/')
                         break;
                     }

@@ -4,8 +4,8 @@
         <div class="col-4 shopping_info">
             <div class="customer_name">姓名</div> 
             <div class="customer_name">email</div> 
-            
-            <button type="button" class="btn btn-outline-secondary ">登出</button>
+            <a href="/" class="btn btn-outline-secondary" @click="logout()">登出</a>
+            <!-- <router-link to="/" class="btn btn-outline-secondary" @click.prevent="logout()">登出</router-link> -->
         </div>
         <div class="total col-4 ">
             <!-- <div class="total_spent item">
@@ -39,7 +39,29 @@
   
 </template>
 
-<script></script>
+<script>
+
+export default {
+    async mounted() {
+      await this.$store.dispatch('getLoginStatus')
+      console.log('loginStatus', this.$store.state.loginStatus)
+    },
+
+    methods: {
+        async logout() {
+            await this.axios.post('/logout').then((response) => {
+                console.log("logout", response)
+                this.$store.dispatch('getLoginStatus')
+            })
+        }
+    },
+
+
+
+}
+
+
+</script>
 
 <style>
 .border {
