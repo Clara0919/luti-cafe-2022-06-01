@@ -86,15 +86,18 @@ export default {
   },
 
   mounted() {
-    this.axios.get("/products").then((response) => {
-      console.log(response);
-      // this.products = response.data.data;
-      this.products = response.data.data.filter((item) => {
+    // this.axios.get("/products").then((response) => {
+    //   console.log(response);
+    //   // this.products = response.data.data;
+    //   this.products = response.data.data.filter((item) => {
+    //     return item.category === "cookie";
+    //   });
+    // });
+
+    //改從localStorage存取
+    this.products = JSON.parse(localStorage.getItem('products')).filter((item) => {
         return item.category === "cookie";
-      });
-      // this.cookieList = cookieList;
-      // console.log("cookieList", cookieList);
-    });
+      })
   },
 };
 </script>

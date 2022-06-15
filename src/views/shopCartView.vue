@@ -23,19 +23,19 @@
               <td><p class="price">NT${{ product.price }}</p></td>
               <td>
                 <div class="quantity input-group">
-                  <button class="btn btn-default" @click="decrement()">
+                  <button class="btn btn-default" @click="decrement(product.cartItem.id)">
                     -
                   </button>
 
                   <input type="number" min="0.00" :value="product.cartItem.quantity" />
 
-                  <button class="btn btn-default" @click="increment()">
+                  <button class="btn btn-default" @click="increment(product.cartItem.id)">
                     +
                   </button>
                 </div>
               </td>
               <td>
-                <p class="price">{{ quantity * 250 }}</p>
+                <p class="price">{{ product.cartItem.quantity * 250 }}</p>
               </td>
             </tr>
           </tbody>
@@ -52,28 +52,56 @@ export default {
   name: "Quantity",
   data() {
     return {
-      quantity: '',
+      // quantity: ,
       products: [],
+      cart:[]// [{id:1,q:3},{id:2,q:3}]
     };
   },
   methods: {
-    increment() {
-      this.quantity++;
+    increment(id) {
+      // this.products[id-1].cartItem.quantity++
+      let flag = false
+      this.cart = this.cart.map(item=>{
+        if(item.id==id){
+          item.q++
+          flag = true
+        }
+      })
+      // if(flag)this.cart.push({id,q:1})
+      
+      localStorage.setItem('cart',JSON.stringify(this.cart))
     },
-    decrement() {
-      if (this.quantity === 1) {
-        this.quantity = 1;
-      } else {
-        this.quantity--;
-      }
+    decrement(id) {
+      // if (this.products[id-1].cartItem.quantity === 1) {
+      //   this.products[id-1].cartItem.quantity = 1;
+      // } else {
+      //   this.products[id-1].cartItem.quantity--;
+      // }
+      // let obj = {
+      //   id:id,
+      //   q:this.products[id-1].cartItem.quantity
+      // }
+      let flag = false
+      this.cart = this.cart.map(item=>{
+        if(item.id==id){
+          item.q--
+          flag = true
+        }
+      })
+      // if(flag)this.cart.push({id,q:1})
+      
+      localStorage.setItem('cart',JSON.stringify(this.cart))
     },
   },
   mounted() {
-    this.axios.get("/cart").then((response) => {
-      console.log(response);
-      this.products = response.data
-      // this.quantity = response.data.cartItem.quantity
-    });
+    this.cart = JSON.parse(localStorage.getItem('cart'))
+    // this.axios.get("/cart").then((response) => {
+    //   console.log(response);
+    //   this.products = response.data
+    //   console.log(response.data[0])
+
+      // this.quantity = response.data[0].cartItem.quantity
+    // });
     // this.axios.get("/cart-quantity").then((response) => {
     //   console.log("cart-quantity: "+response);
     //   // this.products = response.data

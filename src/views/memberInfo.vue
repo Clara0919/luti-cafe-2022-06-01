@@ -42,9 +42,21 @@
 <script>
 
 export default {
+    data(){
+        return {
+            userInfo: []
+        }
+    },
     async mounted() {
       await this.$store.dispatch('getLoginStatus')
       console.log('loginStatus', this.$store.state.loginStatus)
+    },
+    mounted(){
+        this.axios.get("/user-info").then((response) => {
+            console.log(response);
+            
+
+        })
     },
 
     methods: {

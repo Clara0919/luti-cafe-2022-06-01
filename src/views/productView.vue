@@ -168,12 +168,15 @@ export default {
       }
     },
     addCart(id, quantity) {
-      console.log(this.axios);
-      this.axios.post("/cart-add-item", { productId: id, quantity: quantity}).then((response) => {
-        console.log(response);
+      // console.log(this.axios);
+      // this.axios.post("/cart-add-item", { productId: id, quantity: quantity}).then((response) => {
+      //   console.log(response);
         // this.$router.push('/cart')
-      });
+      // });
       
+      //將productId跟數量存進localStorage的cart中
+      localStorage.setItem('cart', JSON.stringify({id,quantity}))
+
     },
     // changePic() {
     //   let pics = document.querySelectorAll(".pic-wrap");
