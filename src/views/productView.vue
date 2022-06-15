@@ -84,6 +84,92 @@
   </div>
   <!-- </template> -->
 </template>
+
+<script>
+export default {
+  name: "Quantity",
+  data() {
+    return {
+      quantity: 1,
+      products: [],
+      id: '',
+      category: [],
+      productDetail: [],
+      price: [],
+      title: [],
+      imageUrlOne: [],
+      imageUrlTwo: [],
+      description: [],
+      cart: []
+    };
+  },
+  methods: {
+    increment() {
+      this.quantity++;
+    },
+    decrement() {
+      if (this.quantity === 1) {
+        this.quantity = 1;
+      } else {
+        this.quantity--;
+      }
+    },
+    addCart(id, quantity) {
+      // console.log(this.axios);
+      // this.axios.post("/cart-add-item", { productId: id, quantity: quantity}).then((response) => {
+      //   console.log(response);
+        // this.$router.push('/cart')
+      // });
+      console.log(this.cart)
+      let flag = false
+      this.cart = this.cart.map(item=>{
+        if(item.id==id){
+          item.quantity = item.quantity + quantity
+          flag = true
+        }
+        return item
+      })
+      if(flag)this.cart.push({id,quantity})
+
+      //將productId跟數量存進localStorage的cart中
+      localStorage.setItem('cart', JSON.stringify(this.cart))
+
+    },
+  },
+  mounted() {
+    let vm = this;
+    // this.products = JSON.parse(localStorage.getItem('products'))
+      vm.productDetail = JSON.parse(localStorage.getItem('products'))
+      vm.productDetail.forEach(function (item, index) {
+        if (item.id =vm.$route.params.productId) {
+          vm.id = item.id;
+          vm.price = item.price;
+          vm.title = item.title;
+          vm.imageUrlOne = item.imageUrlOne;
+          vm.imageUrlTwo = item.imageUrlTwo;
+          vm.imageUrlThree = item.imageUrlThree;
+          vm.description = item.description;
+          vm.category = item.category;
+        }
+      });
+
+    // vm.axios.get("/products").then(async (response) => {
+    //   console.log(response);
+      
+      // this.products = response.data.data.filter((item) => {
+      //   return item.category === "手工餅乾";
+      // });
+      // this.cookieList = cookieList;
+      // console.log("cookieList", cookieList);
+    // });
+    // this.axios.get("/cart").then((res) => {
+    //   console.log(res);
+    // });
+    this.cart = JSON.parse(localStorage.getItem('cart'))
+  },
+};
+</script>
+
 <style scoped>
 a {
   color: gray;
@@ -139,94 +225,3 @@ h4 {
   border-radius: 4px;
 }
 </style>
-<script>
-export default {
-  name: "Quantity",
-  data() {
-    return {
-      quantity: 1,
-      products: [],
-      id: '',
-      category: [],
-      productDetail: [],
-      price: [],
-      title: [],
-      imageUrlOne: [],
-      imageUrlTwo: [],
-      description: [],
-    };
-  },
-  methods: {
-    increment() {
-      this.quantity++;
-    },
-    decrement() {
-      if (this.quantity === 1) {
-        this.quantity = 1;
-      } else {
-        this.quantity--;
-      }
-    },
-    addCart(id, quantity) {
-      // console.log(this.axios);
-      // this.axios.post("/cart-add-item", { productId: id, quantity: quantity}).then((response) => {
-      //   console.log(response);
-        // this.$router.push('/cart')
-      // });
-      
-      //將productId跟數量存進localStorage的cart中
-      localStorage.setItem('cart', JSON.stringify({id,quantity}))
-
-    },
-    // changePic() {
-    //   let pics = document.querySelectorAll(".pic-wrap");
-    //   let main = document.querySelector("#main");
-    //   for (let i = 0; i < pics.length; i++) {
-    //     pics[i].addEventListener("click", function () {
-    //       let img = this.childNodes[0].src;
-    //       // console.log(img)
-    //       main.src = img;
-    //     });
-    //   }
-    // },
-  },
-  mounted() {
-    let vm = this;
-    vm.axios.get("/products").then(async (response) => {
-      console.log(response);
-      vm.productDetail = await response.data.data;
-      vm.productDetail.forEach(function (item, index) {
-        if (item.id == vm.$route.params.productId) {
-          vm.id = item.id;
-          vm.price = item.price;
-          vm.title = item.title;
-          vm.imageUrlOne = item.imageUrlOne;
-          vm.imageUrlTwo = item.imageUrlTwo;
-          vm.imageUrlThree = item.imageUrlThree;
-          vm.description = item.description;
-          vm.category = item.category;
-        }
-      });
-      // this.products = response.data.data.filter((item) => {
-      //   return item.category === "手工餅乾";
-      // });
-      // this.cookieList = cookieList;
-      // console.log("cookieList", cookieList);
-    });
-    // this.axios.get("/cart").then((res) => {
-    //   console.log(res);
-    // });
-  },
-};
-/*
-        let pics=document.querySelectorAll(".pic-wrap img");
-        let main=document.querySelector("#main")
-        for(let i=0;i<pics.length;i++){
-            pics[i].addEventListener("click", function(){
-                let img=this.src;
-                // console.log(img)
-                main.src=img
-            })
-        }
-        */
-</script>

@@ -66,6 +66,7 @@ export default {
           item.q++
           flag = true
         }
+        return item
       })
       // if(flag)this.cart.push({id,q:1})
       
