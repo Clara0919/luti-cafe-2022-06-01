@@ -85,15 +85,11 @@ export default {
     };
   },
   mounted() {
-    this.axios.get("/products").then((response) => {
-      console.log(response);
-      // this.products = response.data.data;
-      this.products = response.data.data.filter((item) => {
+    this.products = JSON.parse(localStorage.getItem("products")).filter(
+      (item) => {
         return item.category === "coffee";
-      });
-      // this.cookieList = cookieList;
-      // console.log("cookieList", cookieList);
-    });
+      }
+    );
   },
 };
 </script>

@@ -12,22 +12,25 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="product in cart" :key="product.id">
               <td>
-                <img
-                  src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiMTYweDE2MCMiXV0.jpeg?sha=c9210b598466573c"
-                  alt=""
-                />
-                <span class="product-name">黑芝麻花生脆餅</span>
+                <img :src="product.imageUrlOne" alt="" class="product-pic" />
+                <span class="product-name">{{ product.title }}</span>
               </td>
-              <td><p class="price">250</p></td>
+              <td>
+                <p class="price">{{ product.price }}</p>
+              </td>
               <td>
                 <div class="quantity input-group">
                   <button class="btn btn-default" @click="decrement()">
                     -
                   </button>
 
-                  <input type="number" min="0.00" :value="quantity" />
+                  <input
+                    type="number"
+                    min="0.00"
+                    :value="product.cartItem.quantity"
+                  />
 
                   <button class="btn btn-default" @click="increment()">
                     +
@@ -35,9 +38,24 @@
                 </div>
               </td>
               <td>
-                <p class="price">{{ quantity * 250 }}</p>
+                <p class="price">
+                  {{ product.cartItem.quantity * product.price }}
+                </p>
               </td>
             </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <!-- <td>{{ product.amount }}</td> -->
+            </tr>
+
+            <!-- <tr class="total-price">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>金額總計：{{ sum }}</td>
+            </tr> -->
           </tbody>
         </table>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -52,8 +70,35 @@ export default {
   name: "Quantity",
   data() {
     return {
-      quantity: 1,
+      cart: [],
+      quantity: "",
+      price: "",
+      title: "",
+      amount: "",
     };
+  },
+  computed: {
+    // sum() {
+    //   var totalPrice = 0;
+    //   this.cart.forEach(function () {
+    //     totalPrice += product.cartItem.quantity * product.price;
+    //   });
+    //   return totalPrice;
+    // },
+    // countQuantity: function () {
+    //   var countQuantity = 0;
+    //   for (var i in this.cart) {
+    //     countQuantity += parseInt(this.cart[i].quantity);
+    //   }
+    //   return countQuantity;
+    // },
+    // countTotal: function () {
+    //   var countTotal = 0;
+    //   for (var i in this.incart) {
+    //     countTotal += parseInt(this.incart[i].quantity * this.incart[i].price);
+    //   }
+    //   return countTotal;
+    // },
   },
   methods: {
     increment() {
@@ -67,11 +112,24 @@ export default {
       }
     },
   },
+  mounted() {
+    this.axios.get("/cart").then((response) => {
+      console.log(response);
+      this.cart = response.data;
+    });
+  },
 };
 </script>
 <style scoped>
 .product-name {
   padding: 40px;
+}
+.product-pic {
+  object-fit: cover;
+  max-height: 120px;
+}
+.total-price {
+  text-align: left;
 }
 .btn-default {
   border: solid 1px gray;

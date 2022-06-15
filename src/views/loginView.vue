@@ -9,21 +9,29 @@
 
       <div class="form-group">
         <label><i class="bi bi-person"></i>帳號</label>
-        <input type="email" class="form-control form-control-lg" />
+        <input
+          type="email"
+          class="form-control form-control-lg"
+          v-model="email"
+        />
       </div>
 
       <div class="form-group">
         <label><i class="bi bi-lock"></i>密碼</label>
-        <input type="password" class="form-control form-control-lg" />
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          v-model="password"
+        />
       </div>
 
-      <div  v-if="errors.length" class="alert alert-danger" role="alert">
+      <div v-if="errors.length" class="alert alert-danger" role="alert">
         <ul>
           <li v-for="error in errors">{{ error }}</li>
         </ul>
       </div>
-      <div  v-if="noLoginMsg" class="alert alert-danger" role="alert">
-        <p>{{noLoginMsg}}</p>
+      <div v-if="noLoginMsg" class="alert alert-danger" role="alert">
+        <p>{{ noLoginMsg }}</p>
       </div>
 
       <button class="btn btn-lg" @click="postLogin">
@@ -33,7 +41,7 @@
       <hr class="divider" />
 
       <div class="d-flex justify-content-between">
-        <router-link to="/register">
+        <router-link to="/signup">
           <span><i class="bi bi-person"></i>註冊會員</span>
         </router-link>
         <router-link to="/forgetpassword">
@@ -60,48 +68,49 @@ span {
 </style>
  
 <script>
-  export default {
-      inject: ['reload'],
-      data() {
-          return {
-              email: '',
-              password: '',
-              errors: [],
-              noLoginMsg: '',
-          }
-      },
-      
-      methods: {
-          validEmail: function (email) {
-            var emailRule = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return emailRule.test(email);
-          },
+export default {
+  inject: ["reload"],
+  data() {
+    return {
+      email: "",
+      password: "",
+      errors: [],
+      noLoginMsg: "",
+    };
+  },
 
-          postLogin() {
-              const submitForm = {
-                  email: this.email,
-                  password: this.password
-              }
-              // console.log(submitForm)
-              this.axios.post('/login', submitForm)
-                  .then((res) => {
-                    console.log(res.data)
-                    let status = res.data.loginSuccess
-                    switch (status){
-                      case 0, 2 :
-                        this.noLoginMsg = '找不到此 user 或密碼錯誤'
-                        break;
-                      case 1 :
-                        this.reload()
-                        this.$router.push('/')
-                        break;
-                    }
-                    
-                  })
-                  .catch((err)=>{
-                    console.log(err);
-                  })
-                  }
-          },
-      }
+  methods: {
+    validEmail: function (email) {
+      var emailRule =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return emailRule.test(email);
+    },
+
+    postLogin() {
+      const submitForm = {
+        email: this.email,
+        password: this.password,
+      };
+      // console.log(submitForm)
+      this.axios
+        .post("/login", submitForm)
+        .then((res) => {
+          console.log(res.data);
+          let status = res.data.loginSuccess;
+          switch (status) {
+            case (0, 2):
+              this.noLoginMsg = "找不到此 user 或密碼錯誤";
+              break;
+            case 1:
+              this.reload();
+              this.$router.push("/");
+              break;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+};
 </script> 

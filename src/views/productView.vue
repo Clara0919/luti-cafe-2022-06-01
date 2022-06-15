@@ -73,7 +73,7 @@
             class="btn btn-outline"
             type="button"
             value="加入購物車"
-            @click="addCart(id)"
+            @click="addCart(id, quantity)"
           />
           <router-link to="/shopCart"
             ><input class="btn btn-solid" type="button" value="直接購買" />
@@ -153,37 +153,8 @@ export default {
       imageUrlOne: [],
       imageUrlTwo: [],
       description: [],
+      id: "",
     };
-  },
-  methods: {
-    increment() {
-      this.quantity++;
-    },
-    decrement() {
-      if (this.quantity === 1) {
-        this.quantity = 1;
-      } else {
-        this.quantity--;
-      }
-    },
-    addCart(id) {
-      console.log(this.axios);
-      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
-        console.log(response);
-        // this.$router.push('/cart')
-      });
-    },
-    // changePic() {
-    //   let pics = document.querySelectorAll(".pic-wrap");
-    //   let main = document.querySelector("#main");
-    //   for (let i = 0; i < pics.length; i++) {
-    //     pics[i].addEventListener("click", function () {
-    //       let img = this.childNodes[0].src;
-    //       // console.log(img)
-    //       main.src = img;
-    //     });
-    //   }
-    // },
   },
   mounted() {
     let vm = this;
@@ -199,6 +170,7 @@ export default {
           vm.imageUrlThree = item.imageUrlThree;
           vm.description = item.description;
           vm.category = item.category;
+          vm.id = item.id;
         }
       });
       // this.products = response.data.data.filter((item) => {
@@ -207,9 +179,42 @@ export default {
       // this.cookieList = cookieList;
       // console.log("cookieList", cookieList);
     });
-    // this.axios.get("/cart").then((res) => {
-    //   console.log(res);
-    // });
+    this.axios.get("/cart").then((res) => {
+      console.log(res);
+    });
+  },
+  methods: {
+    increment() {
+      this.quantity++;
+    },
+    decrement() {
+      if (this.quantity === 1) {
+        this.quantity = 1;
+      } else {
+        this.quantity--;
+      }
+    },
+    addCart(id, quantity) {
+      console.log(this.axios);
+      this.axios
+        .post("/cart-add-item", { productId: id, quantity: quantity })
+        .then((response) => {
+          alert("已加入購物車");
+          console.log(response);
+          // this.$router.push('/cart')
+        });
+    },
+    // changePic() {
+    //   let pics = document.querySelectorAll(".pic-wrap");
+    //   let main = document.querySelector("#main");
+    //   for (let i = 0; i < pics.length; i++) {
+    //     pics[i].addEventListener("click", function () {
+    //       let img = this.childNodes[0].src;
+    //       // console.log(img)
+    //       main.src = img;
+    //     });
+    //   }
+    // },
   },
 };
 /*
