@@ -120,6 +120,8 @@ export default {
       //   console.log(response);
         // this.$router.push('/cart')
       // });
+      console.log(id)
+      console.log(quantity)
       console.log(this.cart)
       let flag = false
       this.cart = this.cart.map(item=>{
@@ -137,6 +139,12 @@ export default {
     },
   },
   mounted() {
+    if(localStorage.getItem('cart')){
+      this.cart = JSON.parse(localStorage.getItem('cart'));
+    }else{
+      this.cart = [];
+    }
+    
     let vm = this;
     // this.products = JSON.parse(localStorage.getItem('products'))
       vm.productDetail = JSON.parse(localStorage.getItem('products'))
@@ -165,7 +173,7 @@ export default {
     // this.axios.get("/cart").then((res) => {
     //   console.log(res);
     // });
-    this.cart = JSON.parse(localStorage.getItem('cart'))
+    
   },
 };
 </script>
