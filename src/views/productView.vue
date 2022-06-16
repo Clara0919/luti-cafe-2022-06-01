@@ -93,13 +93,13 @@ export default {
       quantity: 1,
       products: [],
       id: '',
-      category: [],
-      productDetail: [],
       price: [],
       title: [],
       imageUrlOne: [],
       imageUrlTwo: [],
+      imageUrlThree: [],
       description: [],
+      category: [],
       cart: []
     };
   },
@@ -131,7 +131,7 @@ export default {
         }
         return item
       })
-      if(flag)this.cart.push({id,quantity})
+      if(!flag)this.cart.push({id,quantity}) //如果flag是false
 
       //將productId跟數量存進localStorage的cart中
       localStorage.setItem('cart', JSON.stringify(this.cart))
@@ -148,6 +148,7 @@ export default {
     let vm = this;
     // this.products = JSON.parse(localStorage.getItem('products'))
       vm.productDetail = JSON.parse(localStorage.getItem('products'))
+      console.log(vm.productDetail)
       vm.productDetail.forEach(function (item, index) {
         if (item.id =vm.$route.params.productId) {
           vm.id = item.id;

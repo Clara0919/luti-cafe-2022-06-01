@@ -52,7 +52,6 @@ export default {
   name: "Quantity",
   data() {
     return {
-      // quantity: ,
       products: [],
       cart:[]// [{id:1,q:3},{id:2,q:3}]
     };
@@ -95,7 +94,18 @@ export default {
     },
   },
   mounted() {
-    this.cart = JSON.parse(localStorage.getItem('cart'))
+    if(localStorage.getItem('cart')){
+      this.cart = JSON.parse(localStorage.getItem('cart'));
+    }else{
+      this.cart = [];
+    }
+
+    this.products = JSON.parse(localStorage.getItem('products'))
+    console.log(this.products)
+    // .filter((item) => {
+    //   return item.id === this.cart.id;
+    // })
+    
     // this.axios.get("/cart").then((response) => {
     //   console.log(response);
     //   this.products = response.data
