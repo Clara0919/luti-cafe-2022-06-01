@@ -12,6 +12,7 @@
             </tr>
           </thead>
           <tbody>
+
             <tr v-for="cartItem in cart">
               <td>
                 <img
@@ -21,13 +22,20 @@
                 <span class="product-name">{{ cartItem.title }}</span>
               </td>
               <td><p class="price">NT${{ cartItem.price }}</p></td>
+
               <td>
                 <div class="quantity input-group">
                   <button class="btn btn-default" @click="decrement(cartItem.id)">
                     -
                   </button>
 
-                  <input type="number" min="0.00" :value="cartItem.quantity" />
+
+                  <input
+                    type="number"
+                    min="0.00"
+                    :value="cartItem.quantity"
+                  />
+
 
                   <button class="btn btn-default" @click="increment(cartItem.id)">
                     +
@@ -35,9 +43,25 @@
                 </div>
               </td>
               <td>
-                <p class="price">{{ cartItem.quantity * 250 }}</p>
+
+                <p class="price">
+                  {{ cartItem.quantity * cartItem.price }}
+                </p>
               </td>
             </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <!-- <td>{{ product.amount }}</td> -->
+            </tr>
+
+            <!-- <tr class="total-price">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>金額總計：{{ sum }}</td>
+            </tr> -->
           </tbody>
         </table>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -52,8 +76,32 @@ export default {
   name: "Quantity",
   data() {
     return {
+
       cart:[]// [{id:1,q:3},{id:2,q:3}]
     };
+  },
+  computed: {
+    // sum() {
+    //   var totalPrice = 0;
+    //   this.cart.forEach(function () {
+    //     totalPrice += product.cartItem.quantity * product.price;
+    //   });
+    //   return totalPrice;
+    // },
+    // countQuantity: function () {
+    //   var countQuantity = 0;
+    //   for (var i in this.cart) {
+    //     countQuantity += parseInt(this.cart[i].quantity);
+    //   }
+    //   return countQuantity;
+    // },
+    // countTotal: function () {
+    //   var countTotal = 0;
+    //   for (var i in this.incart) {
+    //     countTotal += parseInt(this.incart[i].quantity * this.incart[i].price);
+    //   }
+    //   return countTotal;
+    // },
   },
   methods: {
     increment(id) {
@@ -94,6 +142,7 @@ export default {
     },
   },
   mounted() {
+
     // if(localStorage.getItem('cart')){
     //   this.cart = JSON.parse(localStorage.getItem('cart'));
     // }else{
@@ -119,12 +168,21 @@ export default {
     //   // this.products = response.data
     //   // this.quantity = response.data.cartItem.quantity
     // });
+
+
   },
 };
 </script>
 <style scoped>
 .product-name {
   padding: 40px;
+}
+.product-pic {
+  object-fit: cover;
+  max-height: 120px;
+}
+.total-price {
+  text-align: left;
 }
 .btn-default {
   border: solid 1px gray;

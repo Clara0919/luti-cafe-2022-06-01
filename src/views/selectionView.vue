@@ -9,15 +9,15 @@
     <div class="row">
       <div class="col-2 gy-4">
         <div class="vertical-nav">
-          <p>手工餅乾</p>
+          <router-link to="/cookie"><p>手工餅乾</p></router-link>
           <hr />
-          <p>職人咖啡</p>
+          <router-link to="/coffee"><p>職人咖啡</p></router-link>
           <hr />
-          <p>沖煮器具</p>
+          <router-link to="/tool"><p>沖煮器具</p></router-link>
           <hr />
-          <p>精選好物</p>
+          <router-link to="/selection"><p>精選好物</p></router-link>
           <hr />
-          <p>伴手禮盒</p>
+          <router-link to="/gift"><p>伴手禮盒</p></router-link>
         </div>
       </div>
 
@@ -50,6 +50,9 @@
   </div>
 </template>
 <style scoped>
+* {
+  font-family: "Noto Sans SC", sans-serif;
+}
 nav {
   padding: 10px;
 }
@@ -58,8 +61,14 @@ nav {
   /* margin-left: 5px; */
 }
 .vertical-nav p {
+  padding: 10px 0 10px 0;
   margin: 10px;
   text-align: center;
+  color: #3f2516;
+}
+a {
+  color: rgb(51, 51, 51);
+  text-decoration: none;
 }
 hr {
   margin: 0px;
@@ -85,15 +94,11 @@ export default {
     };
   },
   mounted() {
-    this.axios.get("/products").then((response) => {
-      console.log(response);
-      // this.products = response.data.data;
-      this.products = response.data.data.filter((item) => {
+    this.products = JSON.parse(localStorage.getItem("products")).filter(
+      (item) => {
         return item.category === "selection";
-      });
-      // this.cookieList = cookieList;
-      // console.log("cookieList", cookieList);
-    });
+      }
+    );
   },
 };
 </script>
