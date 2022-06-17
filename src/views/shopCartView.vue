@@ -12,34 +12,40 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="product in cart" :key="product.id">
+
+            <tr v-for="cartItem in cart">
               <td>
-                <img :src="product.imageUrlOne" alt="" class="product-pic" />
-                <span class="product-name">{{ product.title }}</span>
+                <img
+                  :src="cartItem.imageUrlOne"
+                  alt=""
+                />
+                <span class="product-name">{{ cartItem.title }}</span>
               </td>
-              <td>
-                <p class="price">{{ product.price }}</p>
-              </td>
+              <td><p class="price">NT${{ cartItem.price }}</p></td>
+
               <td>
                 <div class="quantity input-group">
-                  <button class="btn btn-default" @click="decrement()">
+                  <button class="btn btn-default" @click="decrement(cartItem.id)">
                     -
                   </button>
+
 
                   <input
                     type="number"
                     min="0.00"
-                    :value="product.cartItem.quantity"
+                    :value="cartItem.quantity"
                   />
 
-                  <button class="btn btn-default" @click="increment()">
+
+                  <button class="btn btn-default" @click="increment(cartItem.id)">
                     +
                   </button>
                 </div>
               </td>
               <td>
+
                 <p class="price">
-                  {{ product.cartItem.quantity * product.price }}
+                  {{ cartItem.quantity * cartItem.price }}
                 </p>
               </td>
             </tr>
@@ -70,11 +76,8 @@ export default {
   name: "Quantity",
   data() {
     return {
-      cart: [],
-      quantity: "",
-      price: "",
-      title: "",
-      amount: "",
+
+      cart:[]// [{id:1,q:3},{id:2,q:3}]
     };
   },
   computed: {
@@ -101,22 +104,72 @@ export default {
     // },
   },
   methods: {
-    increment() {
-      this.quantity++;
+    increment(id) {
+      // this.products[id-1].cartItem.quantity++
+      let flag = false
+      this.cart = this.cart.map(item=>{
+        if(item.id==id){
+          item.quantity++
+          flag = true
+        }
+        return item
+      })
+      // if(flag)this.cart.push({id,q:1})
+      
+      localStorage.setItem('cart',JSON.stringify(this.cart))
     },
-    decrement() {
-      if (this.quantity === 1) {
-        this.quantity = 1;
-      } else {
-        this.quantity--;
-      }
+    decrement(id) {
+      // if (this.products[id-1].cartItem.quantity === 1) {
+      //   this.products[id-1].cartItem.quantity = 1;
+      // } else {
+      //   this.products[id-1].cartItem.quantity--;
+      // }
+      // let obj = {
+      //   id:id,
+      //   q:this.products[id-1].cartItem.quantity
+      // }
+      let flag = false
+      this.cart = this.cart.map(item=>{
+        if(item.id==id){
+          item.quantity--
+          flag = true
+        }
+        return item
+      })
+      // if(flag)this.cart.push({id,q:1})
+      
+      localStorage.setItem('cart',JSON.stringify(this.cart))
     },
   },
   mounted() {
-    this.axios.get("/cart").then((response) => {
-      console.log(response);
-      this.cart = response.data;
-    });
+
+    // if(localStorage.getItem('cart')){
+    //   this.cart = JSON.parse(localStorage.getItem('cart'));
+    // }else{
+    //   this.cart = [];
+    // }
+    this.cart = JSON.parse(localStorage.getItem('cart')) || []
+    console.log(this.cart)
+    // this.products = JSON.parse(localStorage.getItem('products'))
+    // console.log(this.products)
+    // .filter((item) => {
+    //   return item.id === this.cart.id;
+    // })
+    
+    // this.axios.get("/cart").then((response) => {
+    //   console.log(response);
+    //   this.products = response.data
+    //   console.log(response.data[0])
+
+      // this.quantity = response.data[0].cartItem.quantity
+    // });
+    // this.axios.get("/cart-quantity").then((response) => {
+    //   console.log("cart-quantity: "+response);
+    //   // this.products = response.data
+    //   // this.quantity = response.data.cartItem.quantity
+    // });
+
+
   },
 };
 </script>

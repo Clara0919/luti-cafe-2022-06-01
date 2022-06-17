@@ -12,7 +12,9 @@ import adminView from '../views/adminView.vue'
 import signupView from '../views/signupView.vue'
 import forgetPassword from '../views/forgetPassword.vue'
 import shopCartView from '../views/shopCartView.vue'
-
+import memberInfo from '../views/memberInfo.vue'
+import memberOrder from '../views/memberOrder.vue'
+import accountEdit from '../views/accountEdit.vue'
 
 
 
@@ -83,10 +85,21 @@ const routes = [
     name: 'shopCart',
     component: shopCartView
   },
-
-
-
-
+  {
+    path: '/memberInfo',
+    name: 'memberInfo',
+    component: memberInfo 
+  },
+  {
+    path: '/memberOrder',
+    name: 'memberOrder',
+    component: memberOrder
+  },
+  {
+    path: '/accountEdit',
+    name: 'accountEdit',
+    component: accountEdit
+  }
 ]
 
 const router = createRouter({

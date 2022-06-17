@@ -9,6 +9,7 @@
 
       <div class="form-group">
         <label><i class="bi bi-person"></i>帳號</label>
+
         <input
           type="email"
           class="form-control form-control-lg"
@@ -18,10 +19,12 @@
         <div class="invalid-feedback">
           {{ emailErrMsg }}
         </div>
+
       </div>
 
       <div class="form-group">
         <label><i class="bi bi-lock"></i>密碼</label>
+
         <input
           type="password"
           class="form-control form-control-lg"
@@ -31,6 +34,7 @@
         <div class="invalid-feedback">
           {{ passwordErrMsg }}
         </div>
+
       </div>
 
       <div v-if="errors.length" class="alert alert-danger" role="alert">
@@ -42,9 +46,7 @@
         <p>{{ noLoginMsg }}</p>
       </div>
 
-      <button class="btn btn-lg" @click="postLogin">
-        <router-link to="/admin"> 登入會員 </router-link>
-      </button>
+      <button class="btn btn-lg btn-dark" @click.prevent="postLogin">登入會員</button>
 
       <hr class="divider" />
 
@@ -76,8 +78,9 @@ span {
 </style>
  
 <script>
+
 export default {
-  inject: ["reload"],
+
   data() {
     return {
       email: "",
@@ -99,6 +102,7 @@ export default {
         this.emailErrMsg = "請輸入正確Email格式";
       } else {
         this.emailError = false;
+
       }
     },
     password: function () {

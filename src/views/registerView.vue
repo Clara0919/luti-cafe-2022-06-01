@@ -34,7 +34,7 @@
         <p>{{userCreateSuccessMsg}}</p>
       </div>
 
-      <button @click="postSignup" class="btn btn-dark btn-lg btn-block">註冊</button>
+      <button @click.prevent="postSignup" class="btn btn-dark btn-lg btn-block">註冊</button>
 
       <p class="forgot-password text-right">
         已經註冊過了?

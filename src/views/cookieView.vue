@@ -96,17 +96,20 @@ export default {
   },
 
   mounted() {
-    this.products = JSON.parse(localStorage.getItem("products")).filter(
-      (item) => {
-        return item.category === "cookie";
-      }
-    );
+
     // this.axios.get("/products").then((response) => {
     //   console.log(response);
+    //   // this.products = response.data.data;
     //   this.products = response.data.data.filter((item) => {
     //     return item.category === "cookie";
     //   });
     // });
+
+    //改從localStorage存取
+    this.products = JSON.parse(localStorage.getItem('products')).filter((item) => {
+        return item.category === "cookie";
+      })
+
   },
 };
 </script>

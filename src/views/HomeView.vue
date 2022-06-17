@@ -378,13 +378,11 @@ export default {
   mounted() {
     this.axios.get("/products").then((response) => {
       console.log(response);
-      this.products = response.data.data;
-      localStorage.setItem("products", JSON.stringify(this.products)); //products自己取的
-      // this.products = response.data.data.filter((item) => {
-      //   return item.category === "cookie";
-      // });
-      // this.cookieList = cookieList;
-      // console.log("cookieList", cookieList);
+
+      this.products = response.data.data
+      //存進localStorage
+      localStorage.setItem('products',JSON.stringify(this.products)); //products自己取的
+
     });
     JSON.parse(localStorage.getItem("products"));
   },

@@ -7,8 +7,13 @@
     /></a>
   </div>
   <div class="user-cart d-flex justify-content-end">
-    <router-link to="/login"><i class="bi bi-person"></i></router-link>
-    <router-link to="/shopcart"><i class="bi bi-cart"></i></router-link>
+    <template v-if="$store.state.loginStatus === 0">
+      <router-link to="/login"><i class="bi bi-person"></i></router-link>
+    </template>
+    <template v-if="$store.state.loginStatus === 1">
+      <router-link class="nav-link active" aria-current="page" to="/memberInfo">會員資訊</router-link>
+      <router-link to="/shopcart"><i class="bi bi-cart"></i></router-link>
+    </template>
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid nav-box">
@@ -135,6 +140,20 @@ export default {
   components: {
     HomeView,
   },
+  async mounted() {
+      await this.$store.dispatch('getLoginStatus')
+      console.log('loginStatus', this.$store.state.loginStatus)
+  },
+   methods: {
+        async logout() {
+            await this.axios.post('/logout').then((response) => {
+               console.log(this.axios)
+                console.log("logout", response)
+                this.$store.dispatch('getLoginStatus')
+            })
+        }
+    },
+
 };
 </script>
 
