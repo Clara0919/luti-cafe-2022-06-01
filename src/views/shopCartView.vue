@@ -12,38 +12,36 @@
             </tr>
           </thead>
           <tbody>
-
-            <tr v-for="cartItem in cart">
+            <tr v-for="cartItem in cart" :key="cartItem.id">
               <td>
-                <img
-                  :src="cartItem.imageUrlOne"
-                  alt=""
-                />
+                <img class="product-pic" :src="cartItem.imageUrlOne" alt="" />
                 <span class="product-name">{{ cartItem.title }}</span>
               </td>
-              <td><p class="price">NT${{ cartItem.price }}</p></td>
+              <td>
+                <p class="price">NT${{ cartItem.price }}</p>
+              </td>
 
               <td>
                 <div class="quantity input-group">
-                  <button class="btn btn-default" @click="decrement(cartItem.id)">
+                  <button
+                    class="btn btn-default"
+                    :class="{ disabled: minQuantity }"
+                    @click="decrement(cartItem.id)"
+                  >
                     -
                   </button>
 
+                  <input type="number" min="1.00" :value="cartItem.quantity" />
 
-                  <input
-                    type="number"
-                    min="0.00"
-                    :value="cartItem.quantity"
-                  />
-
-
-                  <button class="btn btn-default" @click="increment(cartItem.id)">
+                  <button
+                    class="btn btn-default"
+                    @click="increment(cartItem.id)"
+                  >
                     +
                   </button>
                 </div>
               </td>
               <td>
-
                 <p class="price">
                   {{ cartItem.quantity * cartItem.price }}
                 </p>
@@ -76,8 +74,8 @@ export default {
   name: "Quantity",
   data() {
     return {
-
-      cart:[]// [{id:1,q:3},{id:2,q:3}]
+      cart: [], // [{id:1,q:3},{id:2,q:3}]
+      // minQuantity: false,
     };
   },
   computed: {
@@ -106,17 +104,19 @@ export default {
   methods: {
     increment(id) {
       // this.products[id-1].cartItem.quantity++
-      let flag = false
-      this.cart = this.cart.map(item=>{
-        if(item.id==id){
-          item.quantity++
-          flag = true
+      let flag = false;
+      this.cart = this.cart.map((item) => {
+        if (item.id == id) {
+          item.quantity++;
+          flag = true;
+        } else {
+          this.minQuantity = true;
         }
-        return item
-      })
+        return item;
+      });
       // if(flag)this.cart.push({id,q:1})
-      
-      localStorage.setItem('cart',JSON.stringify(this.cart))
+
+      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
     decrement(id) {
       // if (this.products[id-1].cartItem.quantity === 1) {
@@ -128,48 +128,48 @@ export default {
       //   id:id,
       //   q:this.products[id-1].cartItem.quantity
       // }
-      let flag = false
-      this.cart = this.cart.map(item=>{
-        if(item.id==id){
-          item.quantity--
-          flag = true
+      let flag = false;
+      this.cart = this.cart.map((item) => {
+        if (item.id == id && item.quantity > 1) {
+          item.quantity--;
+          flag = true;
+          // this.minQuantity = false;
+        } else {
+          // this.minQuantity = true;
         }
-        return item
-      })
+        return item;
+      });
       // if(flag)this.cart.push({id,q:1})
-      
-      localStorage.setItem('cart',JSON.stringify(this.cart))
+
+      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
   },
   mounted() {
-
     // if(localStorage.getItem('cart')){
     //   this.cart = JSON.parse(localStorage.getItem('cart'));
     // }else{
     //   this.cart = [];
     // }
-    this.cart = JSON.parse(localStorage.getItem('cart')) || []
-    console.log(this.cart)
+    this.cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(this.cart);
     // this.products = JSON.parse(localStorage.getItem('products'))
     // console.log(this.products)
     // .filter((item) => {
     //   return item.id === this.cart.id;
     // })
-    
+
     // this.axios.get("/cart").then((response) => {
     //   console.log(response);
     //   this.products = response.data
     //   console.log(response.data[0])
 
-      // this.quantity = response.data[0].cartItem.quantity
+    // this.quantity = response.data[0].cartItem.quantity
     // });
     // this.axios.get("/cart-quantity").then((response) => {
     //   console.log("cart-quantity: "+response);
     //   // this.products = response.data
     //   // this.quantity = response.data.cartItem.quantity
     // });
-
-
   },
 };
 </script>

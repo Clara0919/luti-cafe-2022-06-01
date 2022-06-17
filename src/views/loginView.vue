@@ -19,7 +19,6 @@
         <div class="invalid-feedback">
           {{ emailErrMsg }}
         </div>
-
       </div>
 
       <div class="form-group">
@@ -34,7 +33,6 @@
         <div class="invalid-feedback">
           {{ passwordErrMsg }}
         </div>
-
       </div>
 
       <div v-if="errors.length" class="alert alert-danger" role="alert">
@@ -46,7 +44,9 @@
         <p>{{ noLoginMsg }}</p>
       </div>
 
-      <button class="btn btn-lg btn-dark" @click.prevent="postLogin">登入會員</button>
+      <button class="btn btn-lg btn-dark" @click.prevent="postLogin">
+        登入會員
+      </button>
 
       <hr class="divider" />
 
@@ -78,9 +78,7 @@ span {
 </style>
  
 <script>
-
 export default {
-
   data() {
     return {
       email: "",
@@ -102,7 +100,6 @@ export default {
         this.emailErrMsg = "請輸入正確Email格式";
       } else {
         this.emailError = false;
-
       }
     },
     password: function () {
@@ -122,23 +119,24 @@ export default {
     //   return emailRule.test(email);
     // },
 
-    postLogin() {
+    async postLogin() {
       const submitForm = {
         email: this.email,
         password: this.password,
       };
       // console.log(submitForm)
-      this.axios
+      await this.axios
         .post("/login", submitForm)
         .then((res) => {
-          console.log(res.data);
+          console.log(res.data.loginSuccess);
           let status = res.data.loginSuccess;
           switch (status) {
             case (0, 2):
               this.noLoginMsg = "找不到此 user 或密碼錯誤";
               break;
             case 1:
-              this.reload();
+              // this.reload()
+              this.$store.dispatch("getLoginStatus");
               this.$router.push("/");
               break;
           }

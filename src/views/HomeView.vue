@@ -112,11 +112,7 @@
           <div class="card">
             <router-link :to="`/product/${product.id}`">
               <!-- 再開一個card把bootstrap的card包起來，因為bootstrap的card有一些特殊設定，所以gx會無法work -->
-              <img
-                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1Mjc3LzE2NDI1NzgzODJfZDE3YWFlNDYxYjJmMDRkOWZlMjUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=f74b188a322c62b7"
-                class="card-img-top"
-                alt="..."
-              />
+              <img :src="product.imageUrlOne" class="card-img-top" alt="..." />
 
               <div class="card-body">
                 <h5 class="card-title">
@@ -379,10 +375,9 @@ export default {
     this.axios.get("/products").then((response) => {
       console.log(response);
 
-      this.products = response.data.data
+      this.products = response.data.data;
       //存進localStorage
-      localStorage.setItem('products',JSON.stringify(this.products)); //products自己取的
-
+      localStorage.setItem("products", JSON.stringify(this.products)); //products自己取的
     });
     JSON.parse(localStorage.getItem("products"));
   },

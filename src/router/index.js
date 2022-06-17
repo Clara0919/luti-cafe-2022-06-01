@@ -15,6 +15,10 @@ import shopCartView from '../views/shopCartView.vue'
 import memberInfo from '../views/memberInfo.vue'
 import memberOrder from '../views/memberOrder.vue'
 import accountEdit from '../views/accountEdit.vue'
+import aboutUs from '../views/aboutUs.vue'
+import menu from '../views/menu.vue'
+
+
 
 
 
@@ -88,7 +92,7 @@ const routes = [
   {
     path: '/memberInfo',
     name: 'memberInfo',
-    component: memberInfo 
+    component: memberInfo
   },
   {
     path: '/memberOrder',
@@ -99,8 +103,19 @@ const routes = [
     path: '/accountEdit',
     name: 'accountEdit',
     component: accountEdit
+  },
+  {
+    path: '/aboutUs',
+    name: 'aboutUs',
+    component: aboutUs
+  },
+  {
+    path: '/menu',
+    name: 'menu',
+    component: menu
   }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
