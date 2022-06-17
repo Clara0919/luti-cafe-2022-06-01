@@ -34,7 +34,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page"
-                ><router-link to="/">首頁</router-link></a
+                ><router-link to="/cookie">首頁</router-link></a
               >
             </li>
 
@@ -51,19 +51,19 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <router-link to="/cookie"><p>手工餅乾</p></router-link>
+                  <router-link to="/cookie">手工餅乾</router-link>
                 </li>
                 <li>
-                  <router-link to="/coffee"><p>職人咖啡</p></router-link>
+                  <router-link to="/coffee">職人咖啡</router-link>
                 </li>
                 <li>
-                  <router-link to="/tool"><p>沖煮器具</p></router-link>
+                  <router-link to="/tool">沖煮器具</router-link>
                 </li>
                 <li>
-                  <router-link to="/selection"><p>精選好物</p></router-link>
+                  <router-link to="/selection">精選好物</router-link>
                 </li>
                 <li>
-                  <router-link to="/gift"><p>伴手禮盒</p></router-link>
+                  <router-link to="/gift">伴手禮盒</router-link>
                 </li>
               </ul>
             </li>
@@ -160,20 +160,14 @@ export default {
 <style scoped>
 * {
   box-sizing: border-box;
-  font-family: "Noto Sans SC", sans-serif;
 }
 
 a {
   color: rgb(36, 36, 36);
-  text-decoration: none;
 }
 
 a:hover {
   color: #734429;
-}
-
-.dropdown-menu p {
-  text-align: center;
 }
 .top-logo img {
   display: block;
@@ -189,7 +183,6 @@ a:hover {
   display: flex;
   justify-content: center !important;
 }
-
 .footer {
   background-color: #f9f9f9;
   padding: 40px 40px 70px 40px;

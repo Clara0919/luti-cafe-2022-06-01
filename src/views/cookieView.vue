@@ -9,15 +9,15 @@
     <div class="row">
       <div class="col-2 gy-4">
         <div class="vertical-nav">
-          <router-link to="/cookie"><p>手工餅乾</p></router-link>
+          <p>手工餅乾</p>
           <hr />
-          <router-link to="/coffee"><p>職人咖啡</p></router-link>
+          <p>職人咖啡</p>
           <hr />
-          <router-link to="/tool"><p>沖煮器具</p></router-link>
+          <p>沖煮器具</p>
           <hr />
-          <router-link to="/selection"><p>精選好物</p></router-link>
+          <p>精選好物</p>
           <hr />
-          <router-link to="/gift"><p>伴手禮盒</p></router-link>
+          <p>伴手禮盒</p>
         </div>
       </div>
 
@@ -50,9 +50,6 @@
   </div>
 </template>
 <style scoped>
-* {
-  font-family: "Noto Sans SC", sans-serif;
-}
 nav {
   padding: 10px;
 }
@@ -61,14 +58,8 @@ nav {
   /* margin-left: 5px; */
 }
 .vertical-nav p {
-  padding: 10px 0 10px 0;
   margin: 10px;
   text-align: center;
-  color: #3f2516;
-}
-a {
-  color: rgb(51, 51, 51);
-  text-decoration: none;
 }
 hr {
   margin: 0px;
@@ -78,7 +69,6 @@ hr {
 }
 .card-text {
   text-align: center;
-  font-size: 16px;
 }
 .price {
   color: #734429;
@@ -96,7 +86,6 @@ export default {
   },
 
   mounted() {
-
     // this.axios.get("/products").then((response) => {
     //   console.log(response);
     //   // this.products = response.data.data;
@@ -109,7 +98,6 @@ export default {
     this.products = JSON.parse(localStorage.getItem('products')).filter((item) => {
         return item.category === "cookie";
       })
-
   },
 };
 </script>

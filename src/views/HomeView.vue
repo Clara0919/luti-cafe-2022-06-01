@@ -107,30 +107,139 @@
     <h4>熱銷商品</h4>
     <hr />
     <div class="row g-3">
-      <template v-for="product in products.slice(8, 16)" :key="product.id">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card">
-            <router-link :to="`/product/${product.id}`">
-              <!-- 再開一個card把bootstrap的card包起來，因為bootstrap的card有一些特殊設定，所以gx會無法work -->
-              <img
-                src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1Mjc3LzE2NDI1NzgzODJfZDE3YWFlNDYxYjJmMDRkOWZlMjUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=f74b188a322c62b7"
-                class="card-img-top"
-                alt="..."
-              />
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <router-link to="/product/3">
+            <!-- 再開一個card把bootstrap的card包起來，因為bootstrap的card有一些特殊設定，所以gx會無法work -->
+            <img
+              src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1Mjc3LzE2NDI1NzgzODJfZDE3YWFlNDYxYjJmMDRkOWZlMjUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=f74b188a322c62b7"
+              class="card-img-top"
+              alt="..."
+            />
 
-              <div class="card-body">
-                <h5 class="card-title">
-                  {{ product.title }}
-                </h5>
-                <h6 class="card-text price">{{ product.price }}元</h6>
-                <br />
+            <div class="card-body">
+              <h5 class="card-title">璐緹幸福好禮</h5>
+              <span class="card-text original-price"> NT$760</span>
+              <span class="card-text"> NT$670</span>
+              <br />
 
-                <a href="#" class="btn btn-primary">加入購物車</a>
-              </div>
-            </router-link>
+              <a href="#" class="btn btn-primary">加入購物車</a>
+            </div>
+          </router-link>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <!-- style="width: 18rem;" -->
+          <img
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MjgzLzE2NDI1Nzg2MzJfNjQwYmY4ZjJlODZiZWZkOWYyZjUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=b7728dc021c48d1e"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <!-- <router-link :to="`/product/${product.id}`"> -->
+            <h5 class="card-title">璐緹金喜好禮</h5>
+            <span class="card-text original-price"> NT$860</span>
+            <span class="card-text"> NT$790</span><br />
+            <a href="#" class="btn btn-primary">加入購物車</a>
+            <!-- </router-link> -->
+            >
           </div>
         </div>
-      </template>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <!-- style="width: 18rem;" -->
+          <img
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MzAyLzE2NDI1Nzg4NzVfYjExNTlhM2YwMzg2NzlhMTM0NjQuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5d72e0eee2283340"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">璐緹經典獨家好禮</h5>
+            <span class="card-text original-price"> NT$950</span>
+            <span class="card-text"> NT$1090</span><br />
+            <a href="#" class="btn btn-primary">加入購物車</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <!-- style="width: 18rem;" -->
+          <img
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDIwOTgzLzE2NTE0NzYyNDVfYjUyZjE0MzcyNDA2ZGQ5MmJjZGIuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=b1fd53574d2bb623"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">綜合曲奇餅乾罐</h5>
+            <span class="card-text"> NT$260</span><br />
+            <a href="#" class="btn btn-primary">加入購物車</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <!-- style="width: 18rem;" -->
+          <img
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDIxMTM2LzE2NDI0NzUyOThfNzI5N2IyZTQwMThkMjNjMTFlYjYuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=c83dd0eff64386e2"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">璐緹嚴選掛耳咖啡</h5>
+            <span class="card-text original-price"> NT$175</span>
+            <span class="card-text"> NT$160</span><br />
+            <a href="#" class="btn btn-primary">加入購物車</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <!-- style="width: 18rem;" -->
+          <img
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDI1MDg5LzE2NDI2MDY4NjNfNGEwNmY0NTQ5ODM5YWU2ZDBiMTAuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=5a1a12c9d1643bc8"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">黑芝麻花生脆餅</h5>
+            <span class="card-text"> NT$250</span><br />
+            <a href="#" class="btn btn-primary">加入購物車</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <!-- style="width: 18rem;" -->
+          <img
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDIwOTcwLzE2NDI0NzMyMDBfNGZlZjQwMTdmYTY3Y2Y3ZGQ2ZGUuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=80838a03de09c891"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">燕麥堅果餅</h5>
+            <span class="card-text"> NT$250</span><br />
+            <a href="#" class="btn btn-primary">加入購物車</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card">
+          <!-- style="width: 18rem;" -->
+          <img
+            src="https://cdn1.cybassets.com/media/W1siZiIsIjIwODgzL3Byb2R1Y3RzLzM2MDIyMjYxLzE2NDI0OTEwNjBfYzQzMWExYTk2NzI1MDQ5ZTBlZjMuanBlZyJdLFsicCIsInRodW1iIiwiNjAweDYwMCJdXQ.jpeg?sha=538213d5c9c659f4"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">璐緹嚴選綜合豆</h5>
+            <span class="card-text original-price"> NT$450</span>
+            <span class="card-text"> NT$350</span><br />
+            <a href="#" class="btn btn-primary">加入購物車</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -293,9 +402,6 @@
 * {
   box-sizing: border-box;
 }
-a {
-  text-decoration: none;
-}
 
 .aboutus img {
   object-fit: cover;
@@ -314,9 +420,8 @@ h4:not(.dontselect) {
   color: rgb(59, 59, 59);
 }
 
-.price {
-  color: #734429;
-  font-size: 17px;
+.original-price {
+  text-decoration: line-through;
 }
 
 .btn {
@@ -369,22 +474,28 @@ h4:not(.dontselect) {
 </style>
 <script>
 export default {
+  name: "Quantity",
   data() {
     return {
       products: [],
     };
   },
-  methods: {},
+  methods: {
+    addCart(id) {
+      console.log(this.axios);
+      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
+        console.log(response);
+        // this.$router.push('/cart')
+      });
+    },
+  },
   mounted() {
     this.axios.get("/products").then((response) => {
       console.log(response);
-
       this.products = response.data.data
       //存進localStorage
-      localStorage.setItem('products',JSON.stringify(this.products)); //products自己取的
-
+      localStorage.setItem('products',JSON.stringify(this.products))
     });
-    JSON.parse(localStorage.getItem("products"));
   },
 };
 </script>
