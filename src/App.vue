@@ -11,7 +11,9 @@
       <router-link to="/login"><i class="bi bi-person"></i></router-link>
     </template>
     <template v-if="$store.state.loginStatus === 1">
-      <router-link class="nav-link active" aria-current="page" to="/memberInfo">會員資訊</router-link>
+      <router-link class="nav-link active" aria-current="page" to="/memberInfo"
+        >會員資訊</router-link
+      >
       <router-link to="/shopcart"><i class="bi bi-cart"></i></router-link>
     </template>
   </div>
@@ -69,17 +71,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#"
-                >關於露緹</a
+                ><router-link to="/aboutUs">關於露緹</router-link></a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#"
-                >店內菜單</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >聯絡我們</a
+                ><router-link to="/menu">店內菜單</router-link></a
               >
             </li>
           </ul>
@@ -141,19 +138,18 @@ export default {
     HomeView,
   },
   async mounted() {
-      await this.$store.dispatch('getLoginStatus')
-      console.log('loginStatus', this.$store.state.loginStatus)
+    await this.$store.dispatch("getLoginStatus");
+    console.log("loginStatus", this.$store.state.loginStatus);
   },
-   methods: {
-        async logout() {
-            await this.axios.post('/logout').then((response) => {
-               console.log(this.axios)
-                console.log("logout", response)
-                this.$store.dispatch('getLoginStatus')
-            })
-        }
+  methods: {
+    async logout() {
+      await this.axios.post("/logout").then((response) => {
+        console.log(this.axios);
+        console.log("logout", response);
+        this.$store.dispatch("getLoginStatus");
+      });
     },
-
+  },
 };
 </script>
 

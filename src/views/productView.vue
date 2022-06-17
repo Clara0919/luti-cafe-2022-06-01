@@ -102,6 +102,7 @@ export default {
       description: [],
       category: [],
       cart: []
+
     };
   },
   methods: {
@@ -121,21 +122,31 @@ export default {
       //   console.log(response);
         // this.$router.push('/cart')
       // });
-      console.log(id)
-      console.log(quantity)
-      console.log(this.cart)
-      let flag = false
-      this.cart = this.cart.map(item=>{
-        if(item.id==id){
-          item.quantity = item.quantity + quantity
-          flag = true
+
+      console.log(id);
+      console.log(quantity);
+      console.log(this.cart);
+      let flag = false;
+      this.cart = this.cart.map((item) => {
+        if (item.id == id) {
+          item.quantity = item.quantity + quantity;
+          flag = true;
         }
-        return item
-      })
-      if(!flag)this.cart.push({id, quantity, title: this.title, price: this.price, imageUrlOne: this.imageUrlOne}) //如果flag是false
+        return item;
+      });
+      if (!flag) {
+        this.cart.push({
+          id,
+          quantity,
+          title: this.title,
+          price: this.price,
+          imageUrlOne: this.imageUrlOne,
+        });
+      } //如果flag是false
 
       //將productId跟數量存進localStorage的cart中
-      localStorage.setItem('cart', JSON.stringify(this.cart))
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+      alert("已加入購物車");
 
     },
   },
@@ -234,4 +245,7 @@ h4 {
   border: 1px solid #734429;
   border-radius: 4px;
 }
+
 </style>
+
+
