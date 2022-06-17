@@ -41,7 +41,7 @@
           </tbody>
         </table>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-primary">立即結帳</button>
+          <button class="btn btn-primary" @click="addOrder">立即結帳</button>
         </div>
       </div>
     </div>
@@ -92,6 +92,12 @@ export default {
       
       localStorage.setItem('cart',JSON.stringify(this.cart))
     },
+    addOrder(){
+      let order = this.cart
+      localStorage.setItem('order',JSON.stringify(order))
+      this.cart = [];
+      localStorage.setItem('cart',JSON.stringify(this.cart))
+    }
   },
   mounted() {
     // if(localStorage.getItem('cart')){
