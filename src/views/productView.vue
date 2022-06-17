@@ -92,7 +92,8 @@ export default {
     return {
       quantity: 1,
       products: [],
-      id: '',
+      // productDetail: [],
+      id: [],
       price: [],
       title: [],
       imageUrlOne: [],
@@ -131,7 +132,7 @@ export default {
         }
         return item
       })
-      if(!flag)this.cart.push({id,quantity}) //如果flag是false
+      if(!flag)this.cart.push({id, quantity, title: this.title, price: this.price, imageUrlOne: this.imageUrlOne}) //如果flag是false
 
       //將productId跟數量存進localStorage的cart中
       localStorage.setItem('cart', JSON.stringify(this.cart))
@@ -146,21 +147,21 @@ export default {
     }
     
     let vm = this;
-    // this.products = JSON.parse(localStorage.getItem('products'))
-      vm.productDetail = JSON.parse(localStorage.getItem('products'))
-      console.log(vm.productDetail)
-      vm.productDetail.forEach(function (item, index) {
-        if (item.id =vm.$route.params.productId) {
-          vm.id = item.id;
-          vm.price = item.price;
-          vm.title = item.title;
-          vm.imageUrlOne = item.imageUrlOne;
-          vm.imageUrlTwo = item.imageUrlTwo;
-          vm.imageUrlThree = item.imageUrlThree;
-          vm.description = item.description;
-          vm.category = item.category;
-        }
-      });
+    let productDetail = JSON.parse(localStorage.getItem('products'))
+    // console.log(JSON.parse(localStorage.getItem('products')))
+    console.log(productDetail)
+    productDetail.forEach(function (item, index) {
+      if (item.id == vm.$route.params.productId) {
+        vm.id = item.id;
+        vm.price = item.price;
+        vm.title = item.title;
+        vm.imageUrlOne = item.imageUrlOne;
+        vm.imageUrlTwo = item.imageUrlTwo;
+        vm.imageUrlThree = item.imageUrlThree;
+        vm.description = item.description;
+        vm.category = item.category;
+      }
+    });
 
     // vm.axios.get("/products").then(async (response) => {
     //   console.log(response);

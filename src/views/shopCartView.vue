@@ -12,30 +12,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="product in products">
+            <tr v-for="cartItem in cart">
               <td>
                 <img
-                  :src="product.imageUrlOne"
+                  :src="cartItem.imageUrlOne"
                   alt=""
                 />
-                <span class="product-name">{{ product.title }}</span>
+                <span class="product-name">{{ cartItem.title }}</span>
               </td>
-              <td><p class="price">NT${{ product.price }}</p></td>
+              <td><p class="price">NT${{ cartItem.price }}</p></td>
               <td>
                 <div class="quantity input-group">
-                  <button class="btn btn-default" @click="decrement(product.cartItem.id)">
+                  <button class="btn btn-default" @click="decrement(cartItem.id)">
                     -
                   </button>
 
-                  <input type="number" min="0.00" :value="product.cartItem.quantity" />
+                  <input type="number" min="0.00" :value="cartItem.quantity" />
 
-                  <button class="btn btn-default" @click="increment(product.cartItem.id)">
+                  <button class="btn btn-default" @click="increment(cartItem.id)">
                     +
                   </button>
                 </div>
               </td>
               <td>
-                <p class="price">{{ product.cartItem.quantity * 250 }}</p>
+                <p class="price">{{ cartItem.quantity * 250 }}</p>
               </td>
             </tr>
           </tbody>
@@ -52,7 +52,6 @@ export default {
   name: "Quantity",
   data() {
     return {
-      products: [],
       cart:[]// [{id:1,q:3},{id:2,q:3}]
     };
   },
@@ -62,7 +61,7 @@ export default {
       let flag = false
       this.cart = this.cart.map(item=>{
         if(item.id==id){
-          item.q++
+          item.quantity++
           flag = true
         }
         return item
@@ -84,9 +83,10 @@ export default {
       let flag = false
       this.cart = this.cart.map(item=>{
         if(item.id==id){
-          item.q--
+          item.quantity--
           flag = true
         }
+        return item
       })
       // if(flag)this.cart.push({id,q:1})
       
@@ -94,14 +94,15 @@ export default {
     },
   },
   mounted() {
-    if(localStorage.getItem('cart')){
-      this.cart = JSON.parse(localStorage.getItem('cart'));
-    }else{
-      this.cart = [];
-    }
-
-    this.products = JSON.parse(localStorage.getItem('products'))
-    console.log(this.products)
+    // if(localStorage.getItem('cart')){
+    //   this.cart = JSON.parse(localStorage.getItem('cart'));
+    // }else{
+    //   this.cart = [];
+    // }
+    this.cart = JSON.parse(localStorage.getItem('cart')) || []
+    console.log(this.cart)
+    // this.products = JSON.parse(localStorage.getItem('products'))
+    // console.log(this.products)
     // .filter((item) => {
     //   return item.id === this.cart.id;
     // })

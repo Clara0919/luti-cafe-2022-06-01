@@ -2,8 +2,8 @@
   <div class="container ">
     <div class="row border col-xl-8 mx-auto">
         <div class="col-4 shopping_info">
-            <div class="customer_name">姓名</div> 
-            <div class="customer_name">email</div> 
+            <div class="customer_name">姓名：{{displayName}}</div> 
+            <div class="customer_name">Email：{{email}}</div> 
             <a href="/" class="btn btn-outline-secondary" @click="logout()">登出</a>
             <!-- <router-link to="/" class="btn btn-outline-secondary" @click.prevent="logout()">登出</router-link> -->
         </div>
@@ -27,14 +27,14 @@
             <router-link to="/memberOrder"><button type="button" class="btn danger btn-outline-danger ">查詢訂單</button></router-link>
         </div>
     </div>
-    <div class="container">
+    <!-- <div class="container">
         <div class="row  col-xl-8 mx-auto">
             <div id="recent_order_table">
                 <h5>近期訂單</h5>
                 <span class="no_recent_order">近期無新訂單</span>
             </div>
         </div>
-    </div>
+    </div> -->
   </div>
   
 </template>
@@ -44,7 +44,8 @@
 export default {
     data(){
         return {
-            userInfo: []
+            displayName: '',
+            email: ''
         }
     },
     async mounted() {
@@ -54,7 +55,8 @@ export default {
     mounted(){
         this.axios.get("/user-info").then((response) => {
             console.log(response);
-            
+            this.displayName = response.data.displayName
+            this.email = response.data.email
 
         })
     },
