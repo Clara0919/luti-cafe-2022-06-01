@@ -1,5 +1,14 @@
 <template>
-  <div class="container-fluid">
+  <div class="container">
+    <div id="order_container" class="col-lg-8 col-xs-12 mx-auto">
+      <div class="row">
+        <div id="order_table">
+          <div class="empty">
+            <div class="text-center order">您的帳號目前沒有訂單</div>
+          </div>
+        </div>
+
+        <!-- <div class="container-fluid">
     <div class="row d-flex justify-content-center">
       <div class="col-lg-10">
         <div>訂單資訊</div>
@@ -30,26 +39,32 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table>-->
       </div>
     </div>
   </div>
 </template>
+
+<style>
+.order {
+  margin: 40px;
+}
+</style>
+
 
 <script>
 export default {
   name: "Quantity",
   data() {
     return {
-      order:[]
+      order: [],
     };
   },
-  methods: {
-    
-  },
+  methods: {},
   mounted() {
-    this.order = JSON.parse(localStorage.getItem('order')) || []
-    console.log(this.order)
+    this.order = JSON.parse(localStorage.getItem("order")) || [];
+    console.log(this.order);
   },
 };
 </script>
+

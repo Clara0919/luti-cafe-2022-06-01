@@ -86,7 +86,7 @@
   <div class="container-fluid aboutus">
     <h4>關於璐緹</h4>
     <hr />
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center px-5">
       <div class="col-lg-9 col-md-10 col-sm-10 px-4">
         <img
           src="https://cdn1.cybassets.com/s/files/20883/theme/75080/assets/img/1642522122_8d739cdc_index_2_blocks_image_1.jpg?1642522123"
@@ -106,9 +106,8 @@
   <div class="container-fluid px-4">
     <h4>熱銷商品</h4>
     <hr />
-    <div class="row g-3">
 
-
+    <div class="row g-3 px-5">
       <template v-for="product in products.slice(8, 16)" :key="product.id">
         <div class="col-lg-3 col-md-4 col-sm-6">
           <div class="card">
@@ -117,23 +116,23 @@
               <img :src="product.imageUrlOne" class="card-img-top" alt="..." />
 
 
-            <div class="card-body">
-              <h5 class="card-title">璐緹幸福好禮</h5>
-              <span class="card-text original-price"> NT$760</span>
-              <span class="card-text"> NT$670</span>
-              <br />
 
-              <a href="#" class="btn btn-primary">加入購物車</a>
-            </div>
-          </router-link>
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ product.title }}
+                </h5>
+                <h6 class="card-text price">{{ product.price }}元</h6>
+                <br />
+              </div>
+            </router-link>
+          </div>
         </div>
-      </div>
       </template>
     </div>
   </div>
 
   <div class="container-fluid px-4">
-    <div class="row gx-4">
+    <div class="row gx-4 px-5">
       <!-- member-gift -->
       <div class="col-sm-12 col-md-6 col-lg-6">
         <div class="member-gift">
@@ -208,7 +207,7 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">38女王節 寵粉回饋</h5>
-                    <p class="card-text">紅豆麻吉燒 紅豆麻吉燒 &l⋯</p>
+                    <p class="card-text">紅豆麻吉燒 紅豆麻吉燒⋯</p>
                     <p class="card-text">
                       <small class="text-muted">繼續閱讀...</small>
                     </p>
@@ -220,7 +219,7 @@
               <div class="row g-0">
                 <div class="col-md-4">
                   <img
-                    src="https://scontent.ftpe7-4.fna.fbcdn.net/v/t39.30808-6/280859264_1673086199711313_1081463978888406449_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=9BliQlAr_ZYAX-jovSR&tn=E9KWF5PsMDIh9MHx&_nc_ht=scontent.ftpe7-4.fna&oh=00_AT_Q2jpmieqlSDtsMVFZpdgb0M7YZj8R55Im__S03ICphQ&oe=628D0A86"
+                    src="https://thumbs.dreamstime.com/b/hands-giving-gift-11748191.jpg"
                     class="img-fluid rounded-start"
                     alt="..."
                   />
@@ -292,12 +291,32 @@
   box-sizing: border-box;
 }
 
+h5 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: rgb(45, 45, 45);
+}
+
+h5,
+h6 {
+  text-align: center;
+}
+
+hr {
+  margin: 30px auto;
+  width: 30%;
+}
+
 .aboutus img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
+.card-body {
+  /* max-height: 100px; */
+  padding-bottom: 5px;
+}
 h4:not(.dontselect) {
   text-align: center;
   padding-top: 50px;
@@ -313,10 +332,10 @@ h4:not(.dontselect) {
   text-decoration: line-through;
 }
 
-.btn {
+/* .btn {
   background-color: #734429 !important;
   border: #734429;
-}
+} */
 .member-gift {
   padding: 50px 0;
 }
@@ -340,7 +359,7 @@ h4:not(.dontselect) {
   border: 1.5px solid rgb(203, 201, 201);
   border-radius: 3px;
   overflow: scroll;
-  max-height: 604px;
+  max-height: 600px;
 }
 
 .news img {
@@ -385,7 +404,6 @@ export default {
       this.products = response.data.data;
       //存進localStorage
       localStorage.setItem("products", JSON.stringify(this.products)); //products自己取的
-
     });
   },
 };

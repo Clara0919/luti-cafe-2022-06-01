@@ -35,10 +35,10 @@
                     />
                   </div>
                   <div class="card-body">
-                    <p class="card-text">{{ product.title }}</p>
-                    <p class="card-text price">
+                    <h5 class="card-text">{{ product.title }}</h5>
+                    <h6 class="card-text price">
                       <strong>NT${{ product.price }}</strong>
-                    </p>
+                    </h6>
                   </div>
                 </router-link>
               </div>
@@ -50,6 +50,10 @@
   </div>
 </template>
 <style scoped>
+* {
+  font-family: "Noto Sans SC", sans-serif;
+}
+
 nav {
   padding: 10px;
 }
@@ -60,12 +64,40 @@ nav {
 .vertical-nav p {
   margin: 10px;
   text-align: center;
+
+  color: #3f2516;
+}
+
+.vertical-nav p:hover {
+  color: #734429;
+}
+
+a {
+  color: rgb(51, 51, 51);
+  text-decoration: none;
+}
+a:hover {
+  color: #734429;
 }
 hr {
   margin: 0px;
 }
 .row {
   padding: 10px;
+}
+h5 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: rgb(45, 45, 45);
+}
+
+h5:hover {
+  color: #734429;
+}
+
+h5,
+h6 {
+  text-align: center;
 }
 .card-text {
   text-align: center;
@@ -95,9 +127,11 @@ export default {
     // });
 
     //改從localStorage存取
-    this.products = JSON.parse(localStorage.getItem('products')).filter((item) => {
+    this.products = JSON.parse(localStorage.getItem("products")).filter(
+      (item) => {
         return item.category === "cookie";
-      })
+      }
+    );
   },
 };
 </script>

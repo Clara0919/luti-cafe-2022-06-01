@@ -86,47 +86,51 @@
   </nav>
   <router-view />
   <!-- footer -->
-  <div>
-    <div class="container-fluid footer">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <div class="box">
-            <img
-              src="https://cdn1.cybassets.com/s/files/20883/theme/75080/assets/img/1642596708_0a75cb16_navbar_logo.png?1642596708"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <h6>璐緹咖啡館</h6>
-          <hr />
-          <p>02 2777 2303</p>
-          <p>台北市松山區八德路二段437巷1弄1號1樓</p>
-          <p>週一至週五 10:00-19:00</p>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <h6>商品分類</h6>
-          <hr />
-          <a href="">手工餅乾</a><br />
-          <a href="">職人咖啡</a><br />
-          <a href="">沖煮器具</a><br />
-          <a href="">精選好物</a><br />
-          <a href="">伴手禮盒</a><br />
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12">
-          <h6>服務項目</h6>
-          <hr />
-          <a href="">關於璐緹</a><br />
-          <a href="">店內菜單</a><br />
-          <a href="">購物須知</a><br />
-          <a href="">會議空間</a><br />
-          <a href="">璐緹時光</a><br />
+
+  <div class="container-fluid footer">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="box">
+          <img
+            src="https://cdn1.cybassets.com/s/files/20883/theme/75080/assets/img/1642596708_0a75cb16_navbar_logo.png?1642596708"
+            alt=""
+          />
         </div>
       </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <h6>璐緹咖啡館</h6>
+        <hr />
+        <p>02 2777 2303</p>
+        <p>台北市松山區八德路二段437巷1弄1號1樓</p>
+        <p>週一至週五 10:00-19:00</p>
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <h6>商品分類</h6>
+        <hr />
+
+        <router-link to="/cookie"><a>手工餅乾</a></router-link
+        ><br />
+        <router-link to="/coffee"><a>職人咖啡</a></router-link
+        ><br />
+        <router-link to="/tool"><a>沖煮器具</a></router-link
+        ><br />
+        <router-link to="/selection"><a>精選好物</a></router-link
+        ><br />
+        <router-link to="/gift"><a>伴手禮盒</a></router-link
+        ><br />
+      </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <h6>服務項目</h6>
+        <hr />
+        <router-link to="/aboutUs"><a href="">關於璐緹</a></router-link
+        ><br />
+        <router-link to="/menu"><a href="">店內菜單</a></router-link
+        ><br />
+      </div>
     </div>
-    <div class="bottom-box">
-      <p>Copyright © 切版工 All Rights Reserved.</p>
-    </div>
+  </div>
+  <div class="bottom-box">
+    <p>Copyright © 切版工 All Rights Reserved.</p>
   </div>
 </template>
 <script>

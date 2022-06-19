@@ -12,16 +12,15 @@
             </tr>
           </thead>
           <tbody>
-
-
             <tr v-for="cartItem in cart" :key="cartItem.id">
-
               <td>
                 <img class="product-pic" :src="cartItem.imageUrlOne" alt="" />
                 <span class="product-name">{{ cartItem.title }}</span>
               </td>
 
-              <td><p class="price">NT${{ cartItem.price }}</p></td>
+              <td>
+                <p class="price">NT${{ cartItem.price }}</p>
+              </td>
 
               <td>
                 <div class="quantity input-group">
@@ -33,24 +32,18 @@
                     -
                   </button>
 
-
-                  <input type="number" min="1.00" :value="cartItem.quantity" />
-
                   <button
                     class="btn btn-default"
                     @click="increment(cartItem.id)"
                   >
-
                     +
                   </button>
                 </div>
               </td>
               <td>
-
                 <p class="price">
                   {{ cartItem.quantity * cartItem.price }}
                 </p>
-
               </td>
             </tr>
           </tbody>
@@ -67,10 +60,8 @@ export default {
   name: "Quantity",
   data() {
     return {
-
       cart: [], // [{id:1,q:3},{id:2,q:3}]
       // minQuantity: false,
-
     };
   },
   methods: {
@@ -115,12 +106,12 @@ export default {
 
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
-    addOrder(){
-      let order = this.cart
-      localStorage.setItem('order',JSON.stringify(order))
+    addOrder() {
+      let order = this.cart;
+      localStorage.setItem("order", JSON.stringify(order));
       this.cart = [];
-      localStorage.setItem('cart',JSON.stringify(this.cart))
-    }
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
   },
   mounted() {
     // if(localStorage.getItem('cart')){
@@ -155,6 +146,19 @@ export default {
 .product-name {
   padding: 40px;
 }
+
+.product-pic {
+  object-fit: cover;
+  max-height: 120px;
+}
+
+.number {
+  text-align: center;
+}
+.total-price {
+  text-align: left;
+}
+
 .btn-default {
   border: solid 1px gray;
 }
