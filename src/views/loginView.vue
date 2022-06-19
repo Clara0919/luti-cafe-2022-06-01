@@ -145,7 +145,8 @@ export default {
               break;
 
           }
-      },
+      })
+    },
       
       methods: {
           // validEmail: function (email) {
@@ -181,4 +182,5 @@ export default {
                   }
           },
       }
+}
 </script> 
