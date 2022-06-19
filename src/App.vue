@@ -14,8 +14,8 @@
       <router-link class="nav-link active" aria-current="page" to="/memberInfo"
         >會員資訊</router-link
       >
-      <router-link to="/shopcart"><i class="bi bi-cart"></i></router-link>
     </template>
+    <router-link to="/shopcart"><i class="bi bi-cart"></i></router-link>
   </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid nav-box">
