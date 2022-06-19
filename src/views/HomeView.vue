@@ -106,6 +106,7 @@
   <div class="container-fluid px-4">
     <h4>熱銷商品</h4>
     <hr />
+
     <div class="row g-3 px-5">
       <template v-for="product in products.slice(8, 16)" :key="product.id">
         <div class="col-lg-3 col-md-4 col-sm-6">
@@ -287,9 +288,6 @@
 * {
   box-sizing: border-box;
 }
-a {
-  text-decoration: none;
-}
 
 h5 {
   font-size: 16px;
@@ -328,9 +326,8 @@ h4:not(.dontselect) {
   color: rgb(59, 59, 59);
 }
 
-.price {
-  color: #734429;
-  font-size: 17px;
+.original-price {
+  text-decoration: line-through;
 }
 
 /* .btn {
@@ -383,12 +380,21 @@ h4:not(.dontselect) {
 </style>
 <script>
 export default {
+  name: "Quantity",
   data() {
     return {
       products: [],
     };
   },
-  methods: {},
+  methods: {
+    addCart(id) {
+      console.log(this.axios);
+      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
+        console.log(response);
+        // this.$router.push('/cart')
+      });
+    },
+  },
   mounted() {
     this.axios.get("/products").then((response) => {
       console.log(response);
@@ -397,7 +403,6 @@ export default {
       //存進localStorage
       localStorage.setItem("products", JSON.stringify(this.products)); //products自己取的
     });
-    JSON.parse(localStorage.getItem("products"));
   },
 };
 </script>

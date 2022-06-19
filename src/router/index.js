@@ -9,7 +9,7 @@ import productView from '../views/productView.vue'
 import loginView from '../views/loginView.vue'
 import logoutView from '../views/logoutView.vue'
 import adminView from '../views/adminView.vue'
-import signupView from '../views/signupView.vue'
+import registerView from '../views/registerView.vue'
 import forgetPassword from '../views/forgetPassword.vue'
 import shopCartView from '../views/shopCartView.vue'
 import memberInfo from '../views/memberInfo.vue'
@@ -70,9 +70,9 @@ const routes = [
     name: 'logout',
     component: logoutView
   }, {
-    path: '/signup',
-    name: 'signup',
-    component: signupView
+    path: '/register',
+    name: 'register',
+    component: registerView
   },
   {
     path: '/admin',

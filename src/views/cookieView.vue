@@ -9,15 +9,15 @@
     <div class="row">
       <div class="col-2 gy-4">
         <div class="vertical-nav">
-          <router-link to="/cookie"><p>手工餅乾</p></router-link>
+          <p>手工餅乾</p>
           <hr />
-          <router-link to="/coffee"><p>職人咖啡</p></router-link>
+          <p>職人咖啡</p>
           <hr />
-          <router-link to="/tool"><p>沖煮器具</p></router-link>
+          <p>沖煮器具</p>
           <hr />
-          <router-link to="/selection"><p>精選好物</p></router-link>
+          <p>精選好物</p>
           <hr />
-          <router-link to="/gift"><p>伴手禮盒</p></router-link>
+          <p>伴手禮盒</p>
         </div>
       </div>
 
@@ -62,9 +62,9 @@ nav {
   /* margin-left: 5px; */
 }
 .vertical-nav p {
-  padding: 10px 0 10px 0;
   margin: 10px;
   text-align: center;
+
   color: #3f2516;
 }
 
@@ -101,7 +101,6 @@ h6 {
 }
 .card-text {
   text-align: center;
-  font-size: 16px;
 }
 .price {
   color: #734429;
