@@ -4,10 +4,15 @@
       <div class="row">
         <div id="order_table">
           <div class="empty">
-            <div class="text-center">您的帳號目前沒有訂單</div>
+            <div class="text-center order">您的帳號目前沒有訂單</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+<style>
+.order {
+  margin: 40px;
+}
+</style>

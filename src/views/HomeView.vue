@@ -204,7 +204,7 @@
                 <div class="col-md-8">
                   <div class="card-body">
                     <h5 class="card-title">38女王節 寵粉回饋</h5>
-                    <p class="card-text">紅豆麻吉燒 紅豆麻吉燒 &l⋯</p>
+                    <p class="card-text">紅豆麻吉燒 紅豆麻吉燒⋯</p>
                     <p class="card-text">
                       <small class="text-muted">繼續閱讀...</small>
                     </p>
@@ -314,7 +314,7 @@ hr {
 }
 
 .card-body {
-  max-height: 100px;
+  /* max-height: 100px; */
   padding-bottom: 5px;
 }
 h4:not(.dontselect) {

@@ -31,7 +31,12 @@
                     -
                   </button>
 
-                  <input type="number" min="1.00" :value="cartItem.quantity" />
+                  <input
+                    class="number"
+                    type="number"
+                    min="1.00"
+                    :value="cartItem.quantity"
+                  />
 
                   <button
                     class="btn btn-default"
@@ -180,6 +185,10 @@ export default {
 .product-pic {
   object-fit: cover;
   max-height: 120px;
+}
+
+.number {
+  text-align: center;
 }
 .total-price {
   text-align: left;
