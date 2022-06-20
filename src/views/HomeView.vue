@@ -115,8 +115,6 @@
               <!-- 再開一個card把bootstrap的card包起來，因為bootstrap的card有一些特殊設定，所以gx會無法work -->
               <img :src="product.imageUrlOne" class="card-img-top" alt="..." />
 
-
-
               <div class="card-body">
                 <h5 class="card-title">
                   {{ product.title }}
@@ -297,6 +295,10 @@ h5 {
   color: rgb(45, 45, 45);
 }
 
+h6 {
+  color: #734429;
+}
+
 h5,
 h6 {
   text-align: center;
@@ -372,12 +374,6 @@ h4:not(.dontselect) {
   object-fit: cover;
   width: 100%;
   height: 100%;
-}
-
-.test {
-  background-color: red;
-  width: 200px;
-  height: 200px;
 }
 </style>
 <script>

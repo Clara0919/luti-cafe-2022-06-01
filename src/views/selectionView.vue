@@ -9,15 +9,15 @@
     <div class="row">
       <div class="col-2 gy-4">
         <div class="vertical-nav">
-          <p>手工餅乾</p>
+          <router-link to="/cookie"><p>手工餅乾</p></router-link>
           <hr />
-          <p>職人咖啡</p>
+          <router-link to="/coffee"><p>職人咖啡</p></router-link>
           <hr />
-          <p>沖煮器具</p>
+          <router-link to="/tool"><p>沖煮器具</p></router-link>
           <hr />
-          <p>精選好物</p>
+          <router-link to="/selection"><p>精選好物</p></router-link>
           <hr />
-          <p>伴手禮盒</p>
+          <router-link to="/gift"><p>伴手禮盒</p></router-link>
         </div>
       </div>
 
@@ -35,7 +35,9 @@
                     />
                   </div>
                   <div class="card-body">
-                    <p class="card-text">{{ product.title }}</p>
+                    <p class="card-text">
+                      <strong>{{ product.title }}</strong>
+                    </p>
                     <p class="card-text price">
                       <strong>NT${{ product.price }}</strong>
                     </p>
@@ -50,6 +52,10 @@
   </div>
 </template>
 <style scoped>
+* {
+  font-family: "Noto Sans SC", sans-serif;
+}
+
 nav {
   padding: 10px;
 }
@@ -60,6 +66,20 @@ nav {
 .vertical-nav p {
   margin: 10px;
   text-align: center;
+
+  color: #3f2516;
+}
+
+.vertical-nav p:hover {
+  color: #734429;
+}
+
+a {
+  color: rgb(51, 51, 51);
+  text-decoration: none;
+}
+a:hover {
+  color: #734429;
 }
 hr {
   margin: 0px;
@@ -67,6 +87,17 @@ hr {
 .row {
   padding: 10px;
 }
+p {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: rgb(45, 45, 45);
+}
+
+p:hover {
+  color: #734429;
+}
+
 .card-text {
   text-align: center;
 }

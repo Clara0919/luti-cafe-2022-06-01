@@ -9,15 +9,15 @@
     <div class="row">
       <div class="col-2 gy-4">
         <div class="vertical-nav">
-          <p>手工餅乾</p>
+          <router-link to="/cookie"><p>手工餅乾</p></router-link>
           <hr />
-          <p>職人咖啡</p>
+          <router-link to="/coffee"><p>職人咖啡</p></router-link>
           <hr />
-          <p>沖煮器具</p>
+          <router-link to="/tool"><p>沖煮器具</p></router-link>
           <hr />
-          <p>精選好物</p>
+          <router-link to="/selection"><p>精選好物</p></router-link>
           <hr />
-          <p>伴手禮盒</p>
+          <router-link to="/gift"><p>伴手禮盒</p></router-link>
         </div>
       </div>
 
@@ -35,10 +35,12 @@
                     />
                   </div>
                   <div class="card-body">
-                    <h5 class="card-text">{{ product.title }}</h5>
-                    <h6 class="card-text price">
+                    <p class="card-text">
+                      <strong>{{ product.title }}</strong>
+                    </p>
+                    <p class="card-text price">
                       <strong>NT${{ product.price }}</strong>
-                    </h6>
+                    </p>
                   </div>
                 </router-link>
               </div>
@@ -85,19 +87,15 @@ hr {
 .row {
   padding: 10px;
 }
-h5 {
+p {
   font-size: 16px;
+  margin-top: 10px;
   margin-bottom: 15px;
   color: rgb(45, 45, 45);
 }
 
-h5:hover {
+p:hover {
   color: #734429;
-}
-
-h5,
-h6 {
-  text-align: center;
 }
 .card-text {
   text-align: center;

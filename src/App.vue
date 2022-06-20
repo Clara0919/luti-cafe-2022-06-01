@@ -1,10 +1,10 @@
 <template>
   <div class="top-logo">
-    <a href="#"
+    <router-link to="/"
       ><img
         src="https://cdn1.cybassets.com/s/files/20883/theme/75080/assets/img/1642596708_0a75cb16_navbar_logo.png?1642596708"
         alt=""
-    /></a>
+    /></router-link>
   </div>
   <div class="user-cart d-flex justify-content-end">
     <template v-if="$store.state.loginStatus === 0">
@@ -36,7 +36,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page"
-                ><router-link to="/cookie">首頁</router-link></a
+                ><router-link to="/">首頁</router-link></a
               >
             </li>
 

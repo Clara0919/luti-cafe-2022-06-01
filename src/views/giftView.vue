@@ -9,15 +9,15 @@
     <div class="row">
       <div class="col-2 gy-4">
         <div class="vertical-nav">
-          <p>手工餅乾</p>
+          <router-link to="/cookie"><p>手工餅乾</p></router-link>
           <hr />
-          <p>職人咖啡</p>
+          <router-link to="/coffee"><p>職人咖啡</p></router-link>
           <hr />
-          <p>沖煮器具</p>
+          <router-link to="/tool"><p>沖煮器具</p></router-link>
           <hr />
-          <p>精選好物</p>
+          <router-link to="/selection"><p>精選好物</p></router-link>
           <hr />
-          <p>伴手禮盒</p>
+          <router-link to="/gift"><p>伴手禮盒</p></router-link>
         </div>
       </div>
 
