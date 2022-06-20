@@ -3,60 +3,66 @@
     <div class="row d-flex justify-content-center">
       <div class="col-lg-10">
         <div class="h3 text-center my-5">購物車</div>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">商品明細</th>
-              <th scope="col">單價</th>
-              <th scope="col">數量</th>
-              <th scope="col">小計</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="cartItem in cart" :key="cartItem.id">
-              <td>
-                <img class="product-pic" :src="cartItem.imageUrlOne" alt="" />
-                <span class="product-name">{{ cartItem.title }}</span>
-              </td>
+        <template v-if="isShow">
+          <div class="text-center order mb-5">尚無產品</div>
+        </template>
+        <template v-if="isShowCart">
+          <table class="table table-hover mb-5">
+            <thead>
+              <tr>
+                <th scope="col">商品明細</th>
+                <th scope="col">單價</th>
+                <th scope="col">數量</th>
+                <th scope="col">小計</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="cartItem in cart" :key="cartItem.id">
+                <td>
+                  <img class="product-pic" :src="cartItem.imageUrlOne" alt="" />
+                  <span class="product-name">{{ cartItem.title }}</span>
+                </td>
 
-              <td>
-                <p class="price">NT${{ cartItem.price }}</p>
-              </td>
+                <td>
+                  <p class="price">NT${{ cartItem.price }}</p>
+                </td>
 
-              <td>
-                <div class="quantity input-group">
-                  <button
-                    class="btn btn-default"
-                    :class="{ disabled: minQuantity }"
-                    @click="decrement(cartItem.id)"
-                  >
-                    -
-                  </button>
-                  <input
-                    class="number"
-                    type="number"
-                    min="1.00"
-                    :value="cartItem.quantity"
-                  />
-                  <button
-                    class="btn btn-default"
-                    @click="increment(cartItem.id)"
-                  >
-                    +
-                  </button>
-                </div>
-              </td>
-              <td>
-                <p class="price">
-                  {{ cartItem.quantity * cartItem.price }}
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-primary" @click="addOrder">立即結帳</button>
-        </div>
+                <td>
+                  <div class="quantity input-group">
+                    <button
+                      class="btn btn-default"
+                      :class="{ disabled: minQuantity }"
+                      @click="decrement(cartItem.id)"
+                    >
+                      -
+                    </button>
+                    <input
+                      class="number"
+                      type="number"
+                      min="1.00"
+                      :value="cartItem.quantity"
+                    />
+                    <button
+                      class="btn btn-default"
+                      @click="increment(cartItem.id)"
+                    >
+                      +
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <p class="price">
+                    {{ cartItem.quantity * cartItem.price }}
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-primary" @click="addOrder">立即結帳</button>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -68,6 +74,8 @@ export default {
     return {
       cart: [], // [{id:1,q:3},{id:2,q:3}]
       // minQuantity: false,
+      isShow: false,
+      isShowCart: true
     };
   },
   methods: {
@@ -146,6 +154,11 @@ export default {
     //   // this.products = response.data
     //   // this.quantity = response.data.cartItem.quantity
     // });
+
+    if(this.cart.length==0){
+      this.isShow = true
+      this.isShowCart = false
+    }
   },
 };
 </script>
