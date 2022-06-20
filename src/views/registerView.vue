@@ -8,18 +8,27 @@
       </div>
 
       <div class="form-group">
-        <label>名字</label>
-        <input type="text" class="form-control form-control-lg"  v-model="displayName"/>
+        <label>姓名</label>
+        <input type="text" class="form-control form-control-lg"  v-model="displayName" :class="{ 'is-invalid': displayNameError }"/>
+        <div class="invalid-feedback">
+          {{ displayNameErrMsg }}
+        </div>
       </div>
 
       <div class="form-group">
         <label>信箱</label>
-        <input type="email" class="form-control form-control-lg" v-model="email"/>
+        <input type="email" class="form-control form-control-lg" v-model="email" :class="{ 'is-invalid': emailError }"/>
+        <div class="invalid-feedback">
+          {{ emailErrMsg }}
+        </div>
       </div>
 
       <div class="form-group">
         <label>密碼</label>
-        <input type="password" class="form-control form-control-lg"  v-model="password"/>
+        <input type="password" class="form-control form-control-lg"  v-model="password" :class="{ 'is-invalid': passwordError }"/>
+        <div class="invalid-feedback">
+          {{ passwordErrMsg }}
+        </div>
       </div>
 
       <div  v-if="errors.length" class="alert alert-danger" role="alert">
@@ -27,11 +36,11 @@
           <li v-for="error in errors">{{ error }}</li>
         </ul>
       </div>
-      <div  v-if="userExistMsg" class="alert alert-danger" role="alert">
-        <p>{{userExistMsg}}</p>
+      <div  v-if="userExistMsg" class="alert alert-danger mt-3" role="alert">
+        <span>{{userExistMsg}}</span>
       </div>
-      <div  v-if="userCreateSuccessMsg" class="alert alert-success" role="alert">
-        <p>{{userCreateSuccessMsg}}</p>
+      <div  v-if="userCreateSuccessMsg" class="alert alert-success mt-3" role="alert">
+        <span>{{userCreateSuccessMsg}}</span>
       </div>
 
       <button @click.prevent="postSignup" class="btn btn-dark btn-lg btn-block">註冊</button>
@@ -53,10 +62,41 @@ export default {
             password: '',
             errors: [],
             userExistMsg: '',
-            userCreateSuccessMsg: ''
+            userCreateSuccessMsg: '',
+            displayNameError: false,
+            displayNameErrMsg: '',
+            emailError: false,
+            emailErrMsg: "",
+            passwordError: false,
+            passwordErrMsg: "",
         }
     },
-
+    watch: {
+      displayName: function(){
+        if(this.displayName.length==0) {
+          this.displayNameError = true;
+          this.displayNameErrMsg = "請輸入姓名"
+        }
+      },
+      email: function () {
+        var isMail =
+          /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+        if (!isMail.test(this.email)) {
+          this.emailError = true;
+          this.emailErrMsg = "請輸入正確Email格式";
+        } else {
+          this.emailError = false;
+        }
+      },
+      password: function () {
+        if (this.password.length < 8) {
+          this.passwordError = true;
+          this.passwordErrMsg = "密碼需至少8個字元";
+        } else {
+          this.passwordError = false;
+        }
+      },
+    },
     methods: {
         validEmail: function (email) {
           var emailRule = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

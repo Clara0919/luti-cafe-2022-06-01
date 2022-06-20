@@ -40,8 +40,9 @@
           <li v-for="error in errors" :key="error.id">{{ error }}</li>
         </ul>
       </div>
-      <div v-if="noLoginMsg" class="alert alert-danger" role="alert">
-        <p>{{ noLoginMsg }}</p>
+
+      <div v-if="noLoginMsg" class="alert alert-danger mt-3" role="alert">
+        <span>{{ noLoginMsg }}</span>
       </div>
 
       <button class="btn btn-lg btn-dark" @click.prevent="postLogin">
@@ -128,9 +129,11 @@ export default {
         .then((res) => {
           console.log(res.data.loginSuccess);
           let status = res.data.loginSuccess;
+          let vm = this;
           switch (status) {
             case (0, 2):
-              this.noLoginMsg = "找不到此 user 或密碼錯誤";
+              vm.noLoginMsg = "找不到此 user 或密碼錯誤";
+              console.log(vm.noLoginMsg);
               break;
             case 1:
               // this.reload()

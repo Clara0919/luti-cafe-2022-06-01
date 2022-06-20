@@ -115,6 +115,8 @@
               <!-- 再開一個card把bootstrap的card包起來，因為bootstrap的card有一些特殊設定，所以gx會無法work -->
               <img :src="product.imageUrlOne" class="card-img-top" alt="..." />
 
+
+
               <div class="card-body">
                 <h5 class="card-title">
                   {{ product.title }}

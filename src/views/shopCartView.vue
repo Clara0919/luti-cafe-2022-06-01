@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
       <div class="col-lg-10">
+        <div class="h3 text-center my-5">購物車</div>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -31,7 +32,12 @@
                   >
                     -
                   </button>
-
+                  <input
+                    class="number"
+                    type="number"
+                    min="1.00"
+                    :value="cartItem.quantity"
+                  />
                   <button
                     class="btn btn-default"
                     @click="increment(cartItem.id)"
@@ -111,6 +117,7 @@ export default {
       localStorage.setItem("order", JSON.stringify(order));
       this.cart = [];
       localStorage.setItem("cart", JSON.stringify(this.cart));
+      this.$router.push("/memberOrder");
     },
   },
   mounted() {
